@@ -70,4 +70,4 @@ SessionStart 훅이 `<project>/.omc/snapshot.md` 존재 시 stdout으로 inject.
 
 - snapshot.md 디렉토리 없으면 자동 생성
 - 기존 파일 덮어쓰기 시 사용자 알림 ("기존 스냅샷 덮어씁니다" — 1줄)
-- secret 패턴 자동 제외: `.env`, `*credentials*`, `password=`, `token=`, `sk-` 본문 포함 금지
+- secret 패턴 자동 제외: `.env`, `*credentials*`, `password=`, `token=<value>`, `sk-` 본문 포함 금지
