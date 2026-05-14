@@ -1,0 +1,31 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Claude Code 세션 저장소 (개인 정보)
+.claude/projects/
+
+# OMC 상태 (개인 정보, 회사계정 복제 시 제외 대상)
+.omc/state/
+.omc/logs/
+.omc/sessions/archive/
+
+# Node modules
+node_modules/
+
+# 빌드 산출물
+dist/
+build/
+
+# 로컬 settings (개인 권한)
+.claude/settings.local.json
+.codex/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

@@ -1,0 +1,16 @@
+{
+  "name": "ai-agent-coding-template",
+  "version": "0.1.0-alpha",
+  "description": "Personal AI coding harness scaffolding",
+  "private": true,
+  "scripts": {
+    "setup": "echo 'Run /setup-claude, /setup-codex, or /setup-both inside Claude Code or Codex CLI'",
+    "test": "bats .claude/hooks/tests/ 2>/dev/null || echo 'No bats tests yet'",
+    "lint": "shellcheck .claude/hooks/**/*.sh .codex/hooks/**/*.sh 2>/dev/null || echo 'shellcheck not available'",
+    "test:plan": "test -f .omc/plans/harness-template-mvp-plan.md && echo 'plan ok'"
+  },
+  "devDependencies": {
+    "bats-core": "^1.10.0"
+  },
+  "license": "MIT"
+}
