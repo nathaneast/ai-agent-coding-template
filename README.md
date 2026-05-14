@@ -71,9 +71,9 @@ claude
 
 ---
 
-## 3. 9개 슬래시 커맨드
+## 3. 14개 슬래시 커맨드
 
-### 환경 셋업
+### 환경 셋업 (4)
 | 커맨드 | 설명 |
 |--------|------|
 | `/pjt-init` | 새 프로젝트에 6 폴더 + 마커 + .gitignore 생성 |
@@ -81,16 +81,25 @@ claude
 | `/setup-codex` | Codex CLI 측 셋업 검증 (config.toml, hooks.json) |
 | `/setup-both` | 양쪽 동시 검증 + diff (identical 보장) |
 
-### 일상 워크플로우
+### 일상 워크플로우 (5)
 | 커맨드 | 설명 |
 |--------|------|
-| `/double-check <지시>` | 사용자 지시를 5요소(목표/범위/수용/제약/위험)로 분해 + 더블체크 |
+| `/db-ck <지시>` | 사용자 지시를 5요소(목표/범위/수용/제약/위험)로 분해 + 더블체크 |
 | `/learn <category>: <text>` | `.omc/learnings/{preferences,pitfalls,patterns,glossary}.md`에 누적 → 다음 세션 회수 |
 | `/consensus <task>` | Claude 작업 → Codex 리뷰 → 합의 도달까지 자동 루프 (max 4) |
 | `/resume-session N` | N개 전 세션 컨텍스트 복원 (`.omc/sessions/index.json`) |
 | `/build <PRD>` | PRD 기반 ralph 자동 빌드 (TDD + consensus 강제) |
 
-### 스킬 공유 (역전파)
+### Git + 배포 (5) — 새 프로젝트에서 일상 사용
+| 커맨드 | 설명 |
+|--------|------|
+| `/gi [name]` | git init + private GitHub 레포 생성 + `main`/`stage`/`dev` 브랜치 셋업 |
+| `/cm` | **이 세션에서 변경한 파일만** 커밋 (메시지 자동 생성, 푸시 안 함) |
+| `/cp` | `/cm` + 현재 브랜치 푸시 |
+| `/cp-sm` | `/cp` + `dev → stage → main` 승격 병합 푸시 (배포 트리거) |
+| `/pg [짧게\|상세]` | 현재 세션 진행상황 보고 (Now/Done/InProgress/Pending/Blockers/Next) |
+
+### 스킬 공유 — 역전파 (2)
 | 커맨드 | 설명 |
 |--------|------|
 | `/merge-skill <path>` | 로컬 스킬을 글로벌 본 레포에 promote + 자동 commit |
