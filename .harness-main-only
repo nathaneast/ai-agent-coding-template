@@ -1,0 +1,9 @@
+# Harness Main-Only Marker
+
+본 프로젝트는 **셋업/하네스 템플릿 성격**이므로 글로벌 `branch-guard.sh` 룰 4(main commit 차단)의 예외 대상이다.
+
+- 정책: **main 단일 운영** (dev/main 분리 예외)
+- 이유: 서비스 운영 코드가 아닌 셋업 자산 (스킬/훅/규칙 등). 아카이브되고 점진 발전.
+- 적용 위치: `~/.claude/hooks/branch-guard.sh` 룰 4가 본 파일 존재 시 main commit 허용.
+
+다른 셋업/아카이브 성격 프로젝트에 본 파일을 동일 위치에 두면 같은 예외 적용.
