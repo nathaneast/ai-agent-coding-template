@@ -1,0 +1,15 @@
+{
+  "name": "ai-agent-coding-template",
+  "version": "0.1.0-alpha",
+  "description": "Personal AI coding harness — Codex reviewer adapter for asymmetric dual model harness.",
+  "author": "yun_company_coding personal",
+  "homepage": "https://github.com/yun-company-coding/ai-agent-coding-template",
+  "repository": "https://github.com/yun-company-coding/ai-agent-coding-template",
+  "license": "MIT",
+  "keywords": ["codex-cli", "harness", "reviewer", "consensus-loop"],
+  "requires": {
+    "codex-cli": ">=0.124.0"
+  },
+  "skills": [],
+  "interface": "reviewer"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "ai-agent-coding-template",
+  "version": "0.1.0-alpha",
+  "description": "Personal AI coding harness — Claude main worker + Codex reviewer asymmetric dual model with SessionStart auto-injection and /learn persistence.",
+  "author": "yun_company_coding personal",
+  "homepage": "https://github.com/yun-company-coding/ai-agent-coding-template",
+  "repository": "https://github.com/yun-company-coding/ai-agent-coding-template",
+  "license": "MIT",
+  "keywords": ["claude-code", "codex", "harness", "tdd", "openspec", "consensus-loop"],
+  "requires": {
+    "claude-code": ">=2.0.0"
+  }
+}
