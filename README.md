@@ -111,6 +111,11 @@ claude
 | `/merge-skill <path> --push` | promote + commit + `git push origin main` 한번에 |
 | `/mirror-personal` | yunjadong-team 레포 → nathaneast 레포 미러 푸시 |
 
+### 메모리 동기화 (1)
+| 커맨드 | 설명 |
+|--------|------|
+| `/push-global-memory` | `plugin/memory/user/` 글로벌 메모를 yunjadong-team(메인) + nathaneast(미러) 양쪽 push. 다른 PC는 `update.sh`로 동기화 |
+
 ---
 
 ## 4. 11개 스킬
@@ -173,21 +178,64 @@ bash ~/.claude/plugins/nathaneast-aiacht/scripts/update.sh
 
 ---
 
-## 6. 메모리 + 세션 보존
+## 6. 메모리 + 세션 보존 (v0.4 — 3-Tier)
 
-본 하네스는 Claude Code native memory를 활용 + `/ss-re` 스냅샷으로 세션 손실 방지.
+본 하네스는 다음 3-계층 메모리 + `/ss-re` 스냅샷으로 사용자 컨텍스트를 누적·동기화한다.
 
-### 메모리 — "저장해" 자연어 트리거 (3계층)
+### 3-Tier 구조
 
-| 사용자 발언 | 저장 위치 | 적용 범위 |
-|------------|----------|----------|
-| "저장해" / "기억해" (기본) | `<project>/CLAUDE.md` | 이 프로젝트 (git 공유) |
-| "내 PC에만" / "개인용" | `<project>/.claude/CLAUDE.local.md` | 이 프로젝트 + 개인 (gitignore) |
-| "글로벌에" / "전역" / "모든 프로젝트" | `~/.claude/CLAUDE.md` | 모든 프로젝트 + 머신 |
+| Tier | 위치 | 동기화 | 용도 |
+|---|---|---|---|
+| 1 휘발 | Claude Code `<remember>` 태그 | X (이 PC, 7일 만료) | 디버깅·임시 메모 |
+| 2 프로젝트 | `<project>/06.memory/` | git (이 프로젝트) | 결정·사실·교훈 |
+| 3 글로벌 | 본 하네스 `plugin/memory/user/` | `/push-global-memory` → `update.sh` | 횡단 작업성향·금기·골 |
 
-회수: Claude Code가 매 세션 자동 컨텍스트 로드. 별도 호출 X.
-조회/편집: `/memory` (Claude Code 공식).
-정리: 파일 길어지면 사용자가 `/memory`로 직접 편집.
+### 자연어 트리거 → 자동 분류
+
+"저장해/기억해놔/참고해/이따 기억해" 한마디 → Claude가 *내용*을 보고 분류 → 적절한 tier에 저장.
+
+명시 prefix(옵션): `#g/...`(글로벌), `#p/...`(프로젝트), `#t/...`(휘발).
+
+불확실 시 1줄 되묻기 (최대 1회).
+
+### Tier별 사용 예
+
+- "이따 보고서에 X 쓸거니 기억" → `<remember>` (Tier 1, 7일 후 자동 만료)
+- "재훈씨가 supabase 도입 요청" → `06.memory/project.md` (Tier 2, git 공유)
+- "이전에 raw tailwind 시도 → 폐기" → `06.memory/feedback.md`
+- "Linear ABC-123 = 이 프로젝트 버그" → `06.memory/reference.md`
+- "TypeScript strict 항상" → `plugin/memory/user/user.md` (Tier 3, 모든 프로젝트)
+- "토스트 3초 통일" → `plugin/memory/user/comfort.md`
+- "AI 인프라 자동화 골" → `plugin/memory/user/goals.md`
+- "main 직접 push 금지" → `plugin/memory/user/dont.md`
+
+### 보안 가드 (G4 비밀 스캔)
+
+`memory-write-guard.sh` 훅이 PreToolUse Write/Edit에서 다음을 검사:
+- API 토큰 패턴 → **차단**
+- 이메일 → **차단**
+- NDA·금액·계약 키워드 → **경고**
+
+가드를 우회하려면 사용자가 명시 룰 변경 필요.
+
+### 세션 자동 로드
+
+SessionStart 훅이 매 세션 시작 시 다음을 `<system-reminder>`로 inject:
+1. `<project>/06.memory/*.md`
+2. `plugin/memory/user/*.md`
+
+별도 호출 X. 회수는 자동.
+
+### 동기화 흐름
+
+```
+[PC A] "TypeScript strict 항상" → Claude → plugin/memory/user/user.md 업데이트
+       /push-global-memory → 본 하네스 git push (yunjadong-team + nathaneast 미러)
+
+[PC B] bash ~/.claude/plugins/nathaneast-aiacht/scripts/update.sh
+       → 다음 세션 SessionStart 자동 inject
+       → Claude가 typescript 작업 시 자발적으로 strict 적용
+```
 
 ### 스냅샷 — `/ss-re` (세션 손실 방지)
 
@@ -347,6 +395,7 @@ git push origin main
 - **v0.1.0** (2026-05-14): 초기 v0.1.0 — 본 레포 단일 프로젝트 모델
 - **v0.2.0** (2026-05-14): 글로벌 도구 + /pjt-init + /merge-skill 단순화 + /mirror-personal
 - **v0.2.1** (2026-05-14): native memory 활용 + /ss-re 스냅샷 신규 + /learn /resume-session 폐기
+- **v0.4** (2026-05-14): 메모리 3-Tier + 자연어 자동 분류 + /push-global-memory
 - 변경 이력: `git log --oneline`
 
 ---

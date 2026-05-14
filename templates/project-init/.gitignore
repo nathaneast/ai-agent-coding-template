@@ -8,3 +8,6 @@
 
 # Session snapshot (작업 인계용, 작업 완료 후 삭제 가능)
 .omc/snapshot.md
+
+# Memory v0.4 — private subdirectory (optional)
+06.memory/private/

@@ -29,7 +29,7 @@ echo "    target: $PROJECT_CWD"
 echo ""
 
 # 6 폴더 복사 (기존 컨텐츠 보존)
-for dir in 01.spec 02.workflow 03.archive 04.docs 05.tasks openspec; do
+for dir in 01.spec 02.workflow 03.archive 04.docs 05.tasks 06.memory openspec; do
   if [[ -d "$PROJECT_CWD/$dir" ]]; then
     echo "→ $dir/ 이미 존재 — 건너뜀"
   else

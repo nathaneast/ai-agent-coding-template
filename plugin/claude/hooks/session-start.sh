@@ -57,6 +57,48 @@ inject_section "Previous Session Snapshot (from /ss-re)" "$SNAPSHOT"
 
 log_info "SessionStart: injected ~${total_tokens} tokens"
 
+# === Memory v0.4 — 06.memory/ + plugin/memory/user/ inject ===
+
+# Tier 2: 프로젝트 메모리 (현재 worktree)
+PROJECT_MEMORY_DIR="$PROJECT_CWD/06.memory"
+if [[ -d "$PROJECT_MEMORY_DIR" ]]; then
+  echo ""
+  echo "<system-reminder>"
+  echo "프로젝트 메모리 (Tier 2 — 이 프로젝트 한정):"
+  echo ""
+  for f in MEMORY.md project.md feedback.md reference.md CHANGELOG.md; do
+    if [[ -f "$PROJECT_MEMORY_DIR/$f" ]]; then
+      echo "## 06.memory/$f"
+      cat "$PROJECT_MEMORY_DIR/$f"
+      echo ""
+    fi
+  done
+  echo "</system-reminder>"
+fi
+
+# Tier 3: 사용자 글로벌 메모리 (본 하네스 plugin)
+# 1차: 설치된 플러그인 경로, 2차 fallback: 본 레포 개발 모드 (PLUGIN_ROOT 기준)
+GLOBAL_MEMORY_DIR="$HOME/.claude/plugins/nathaneast-aiacht/plugin/memory/user"
+if [[ ! -d "$GLOBAL_MEMORY_DIR" && -d "$PLUGIN_ROOT/memory/user" ]]; then
+  GLOBAL_MEMORY_DIR="$PLUGIN_ROOT/memory/user"
+fi
+if [[ -d "$GLOBAL_MEMORY_DIR" ]]; then
+  echo ""
+  echo "<system-reminder>"
+  echo "사용자 글로벌 메모리 (Tier 3 — 모든 프로젝트 횡단):"
+  echo ""
+  for f in INDEX.md user.md comfort.md goals.md dont.md CHANGELOG.md; do
+    if [[ -f "$GLOBAL_MEMORY_DIR/$f" ]]; then
+      echo "## plugin/memory/user/$f"
+      cat "$GLOBAL_MEMORY_DIR/$f"
+      echo ""
+    fi
+  done
+  echo "</system-reminder>"
+fi
+
+# === End Memory v0.4 ===
+
 # USER_CONFIRM_NEEDED marker (Codex consensus fallback stage 3)
 MARKER="$PROJECT_CWD/.omc/state/USER_CONFIRM_NEEDED"
 if [[ -f "$MARKER" ]]; then
