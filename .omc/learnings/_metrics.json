@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "counters": {
+    "learnings_added": 1,
+    "learnings_recalled": 0,
+    "double_check_invoked": 0,
+    "consensus_first_pass": 0,
+    "consensus_loops_total": 0,
+    "pending_resolved": 0,
+    "pending_unresolved": 0
+  },
+  "last_updated": "2026-05-14T01:03:32Z"
+}
