@@ -31,6 +31,18 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/posttool-openspec-guard.sh",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   }
 }

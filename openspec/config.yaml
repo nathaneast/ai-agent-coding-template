@@ -1,0 +1,10 @@
+version: "1.0"
+project:
+  name: ai-agent-coding-template
+  description: Personal AI coding harness — Claude main + Codex reviewer
+specs:
+  base_path: openspec/specs
+  changes_path: openspec/changes
+workflow:
+  require_review: true
+  reviewer: codex
