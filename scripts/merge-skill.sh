@@ -21,7 +21,7 @@ if [[ -z "$NAME" ]]; then
   NAME="$(basename "$(dirname "$SKILL_FILE")")"
 fi
 
-TARGET_DIR="$REPO_ROOT/.claude/skills/$NAME"
+TARGET_DIR="$REPO_ROOT/plugin/claude/skills/$NAME"
 TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 if [[ -d "$TARGET_DIR" ]]; then
@@ -35,7 +35,7 @@ cp -r "$(dirname "$SKILL_FILE")/." "$TARGET_DIR/"
 echo "merged skill '$NAME' to $TARGET_DIR"
 
 # Update plugin.json skills array if not present
-PLUGIN="$REPO_ROOT/.claude-plugin/plugin.json"
+PLUGIN="$REPO_ROOT/plugin/claude-plugin/plugin.json"
 if [[ -f "$PLUGIN" ]] && command -v jq >/dev/null 2>&1; then
   EXISTS=$(jq --arg n "$NAME" '.skills | index($n)' "$PLUGIN")
   if [[ "$EXISTS" == "null" ]]; then

@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
-# .claude/hooks/session-start.sh
+# plugin/claude/hooks/session-start.sh
 # Auto-inject core workflow skills into Claude Code session context
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+# PLUGIN_ROOT = the installed plugin directory (where plugin/claude/hooks/ lives, 3 levels up)
+PLUGIN_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+# PROJECT_CWD = the project being worked in (where .harness-active / .harness-main-only lives)
+PROJECT_CWD="${CLAUDE_PROJECT_DIR:-$PWD}"
+
+# Marker check: only inject for active harness projects
+if [[ ! -f "$PROJECT_CWD/.harness-active" && ! -f "$PROJECT_CWD/.harness-main-only" ]]; then
+  exit 0
+fi
 
 # shellcheck source=lib/log.sh
 source "$SCRIPT_DIR/lib/log.sh"
@@ -15,14 +24,15 @@ source "$SCRIPT_DIR/lib/inject.sh"
 source "$SCRIPT_DIR/lib/token-budget.sh"
 
 TOKEN_LIMIT=7000
-SKILLS_DIR="$REPO_ROOT/.claude/skills"
+# Skills live in the plugin (not the project)
+SKILLS_DIR="$PLUGIN_ROOT/claude/skills"
 CORE_SKILLS=(branch-strategy tdd-loop consensus-loop env-security session-index)
 
 log_info "SessionStart: injecting core skills"
 
 # 1. Header
 printf '# ai-agent-coding-template — Session Context\n\n'
-printf '> Auto-injected on every SessionStart. See `.claude/hooks/session-start.sh`.\n\n'
+printf '> Auto-injected on every SessionStart. See `plugin/claude/hooks/session-start.sh`.\n\n'
 
 # 2. Core skills
 total_tokens=0
@@ -41,16 +51,16 @@ for skill in "${CORE_SKILLS[@]}"; do
   fi
 done
 
-# 3. learnings placeholder (Phase 2 will populate)
-LEARNINGS_DIR="$REPO_ROOT/.omc/learnings"
+# 3. learnings — from the PROJECT_CWD (project-specific)
+LEARNINGS_DIR="$PROJECT_CWD/.omc/learnings"
 if [[ -d "$LEARNINGS_DIR" ]]; then
   for category in preferences pitfalls patterns glossary; do
     inject_section "Learnings: $category" "$LEARNINGS_DIR/$category.md"
   done
 fi
 
-# 4. session-index placeholder (Phase 5 will populate)
-SESSION_INDEX="$REPO_ROOT/.omc/sessions/index.json"
+# 4. session-index — from the PROJECT_CWD
+SESSION_INDEX="$PROJECT_CWD/.omc/sessions/index.json"
 if [[ -f "$SESSION_INDEX" ]]; then
   printf '## Recent Sessions\n\n```json\n'
   tail -c 2000 "$SESSION_INDEX"
@@ -60,7 +70,7 @@ fi
 log_info "SessionStart: injected ~${total_tokens} tokens"
 
 # USER_CONFIRM_NEEDED marker (Codex consensus fallback stage 3)
-MARKER="$REPO_ROOT/.omc/state/USER_CONFIRM_NEEDED"
+MARKER="$PROJECT_CWD/.omc/state/USER_CONFIRM_NEEDED"
 if [[ -f "$MARKER" ]]; then
   printf '\n---\n\n## ⚠️ USER CONFIRM NEEDED\n\n'
   printf 'Consensus fallback stage 3 was triggered in a previous session.\n\n'

@@ -2,23 +2,23 @@
 set -uo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
-LOG="$REPO_ROOT/04.docs/setup-codex.log"
-mkdir -p "$REPO_ROOT/04.docs"
+LOG="$REPO_ROOT/templates/project-init/04.docs/setup-codex.log"
+mkdir -p "$REPO_ROOT/templates/project-init/04.docs"
 
 pass=0; fail=0; results=()
 check() { local n="$1"; shift; if "$@" >/dev/null 2>&1; then results+=("PASS  $n"); pass=$((pass+1)); else results+=("FAIL  $n"); fail=$((fail+1)); fi; }
 
-check ".codex/config.toml exists" test -f .codex/config.toml
-check "codex_hooks feature enabled" grep -q "codex_hooks = true" .codex/config.toml
-check ".codex/hooks.json valid JSON" jq -e . .codex/hooks.json
-check "SessionStart in hooks.json" bash -c 'jq -e ".hooks.SessionStart[0]" .codex/hooks.json'
-check "SessionEnd in hooks.json" bash -c 'jq -e ".hooks.SessionEnd[0]" .codex/hooks.json'
-check ".codex/hooks/session-start.sh exec" test -x .codex/hooks/session-start.sh
-check ".codex/hooks/session-end.sh exec" test -x .codex/hooks/session-end.sh
-check ".codex-plugin/plugin.json valid" jq -e . .codex-plugin/plugin.json
+check "plugin/codex/config.toml exists" test -f plugin/codex/config.toml
+check "codex_hooks feature enabled" grep -q "codex_hooks = true" plugin/codex/config.toml
+check "plugin/codex/hooks.json valid JSON" jq -e . plugin/codex/hooks.json
+check "SessionStart in hooks.json" bash -c 'jq -e ".hooks.SessionStart[0]" plugin/codex/hooks.json'
+check "SessionEnd in hooks.json" bash -c 'jq -e ".hooks.SessionEnd[0]" plugin/codex/hooks.json'
+check "plugin/codex/hooks/session-start.sh exec" test -x plugin/codex/hooks/session-start.sh
+check "plugin/codex/hooks/session-end.sh exec" test -x plugin/codex/hooks/session-end.sh
+check "plugin/codex-plugin/plugin.json valid" jq -e . plugin/codex-plugin/plugin.json
 check "AGENTS.md exists" test -f AGENTS.md
 check "AGENTS.md mentions CLAUDE.md" grep -q "CLAUDE.md" AGENTS.md
-check "Codex wrapper simulation" bash .codex/hooks/session-start.sh
+check "Codex wrapper simulation" bash plugin/codex/hooks/session-start.sh
 
 {
   echo "# /setup-codex — $(date -u +%Y-%m-%dT%H:%M:%SZ)"

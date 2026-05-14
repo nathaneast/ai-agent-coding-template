@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# .claude/hooks/lib/inject.sh - compose context injection
+# plugin/claude/hooks/lib/inject.sh - compose context injection
 
 inject_file() {
   # Print file content if exists, else nothing

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# .claude/hooks/lib/token-budget.sh - approximate token budget (chars/4)
+# plugin/claude/hooks/lib/token-budget.sh - approximate token budget (chars/4)
 
 estimate_tokens() {
   local file="$1"

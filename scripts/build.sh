@@ -8,7 +8,7 @@ PRD="${*:-}"
 
 # 1. Record PRD
 mkdir -p 01.spec
-PRD_FILE="01.spec/prd-$(date -u +%Y%m%d-%H%M%S).md"
+PRD_FILE="templates/project-init/01.spec/prd-$(date -u +%Y%m%d-%H%M%S).md"
 {
   echo "# PRD"
   echo ""

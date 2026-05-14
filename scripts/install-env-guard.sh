@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install env-security guards: .gitignore + .claude/settings.json deny rules
+# Install env-security guards: .gitignore + plugin/claude/settings.json deny rules
 set -uo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
@@ -11,11 +11,11 @@ if [[ -f .gitignore ]]; then
 fi
 
 # Ensure settings.json deny includes env
-if [[ -f .claude/settings.json ]] && command -v jq >/dev/null 2>&1; then
+if [[ -f plugin/claude/settings.json ]] && command -v jq >/dev/null 2>&1; then
   TMP=$(mktemp)
   jq '
     .permissions.deny = ((.permissions.deny // []) + ["Read(.env*)", "Edit(.env*)", "Write(.env*)"] | unique)
-  ' .claude/settings.json > "$TMP" && mv "$TMP" .claude/settings.json
+  ' plugin/claude/settings.json > "$TMP" && mv "$TMP" plugin/claude/settings.json
 fi
 
 echo "env-guard installed"

@@ -1,4 +1,4 @@
-# /setup-claude — 2026-05-14T01:36:38Z
+# /setup-claude — 2026-05-14T05:50:51Z
 
 - PASS  settings.json exists
 - PASS  settings.json valid JSON
@@ -11,7 +11,7 @@
 - PASS  skill consensus-loop/SKILL.md
 - PASS  skill env-security/SKILL.md
 - PASS  skill session-index/SKILL.md
-- PASS  .claude-plugin/plugin.json valid
+- PASS  plugin/claude-plugin/plugin.json valid
 - PASS  .omc/learnings/preferences.md
 - PASS  .omc/learnings/pitfalls.md
 - PASS  .omc/learnings/patterns.md

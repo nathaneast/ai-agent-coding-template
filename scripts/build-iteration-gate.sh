@@ -28,10 +28,10 @@ UNCOMMITTED=$(git status --porcelain | wc -l | tr -d ' ')
 check "task-scope (<=5 uncommitted)" bash -c "[[ $UNCOMMITTED -le 5 ]]"
 
 # 3. tests exist (bats or other) — only check if bats files are present
-if [[ -d .claude/hooks/tests ]] && ls .claude/hooks/tests/*.bats >/dev/null 2>&1; then
-  check "bats tests exist" bash -c "ls .claude/hooks/tests/*.bats >/dev/null 2>&1"
+if [[ -d plugin/claude/hooks/tests ]] && ls plugin/claude/hooks/tests/*.bats >/dev/null 2>&1; then
+  check "bats tests exist" bash -c "ls plugin/claude/hooks/tests/*.bats >/dev/null 2>&1"
   if command -v bats >/dev/null 2>&1; then
-    check "bats pass" bats .claude/hooks/tests/
+    check "bats pass" bats plugin/claude/hooks/tests/
   fi
 fi
 

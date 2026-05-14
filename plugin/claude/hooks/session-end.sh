@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# .claude/hooks/session-end.sh
+# plugin/claude/hooks/session-end.sh
 # 세션 종료: KPI 카운터 + sessions/index.json append + archive dump
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-LEARNINGS_DIR="$REPO_ROOT/.omc/learnings"
-SESSIONS_DIR="$REPO_ROOT/.omc/sessions"
+# PLUGIN_ROOT not needed here; all state is project-scoped
+PROJECT_CWD="${CLAUDE_PROJECT_DIR:-$PWD}"
+
+LEARNINGS_DIR="$PROJECT_CWD/.omc/learnings"
+SESSIONS_DIR="$PROJECT_CWD/.omc/sessions"
 mkdir -p "$SESSIONS_DIR/archive"
 
 INPUT=""
@@ -24,17 +26,17 @@ fi
 
 TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 DATE="$(date -u +%Y-%m-%d)"
-BRANCH="$(cd "$REPO_ROOT" && git rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
-CWD="$REPO_ROOT"
+BRANCH="$(cd "$PROJECT_CWD" && git rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
+CWD="$PROJECT_CWD"
 
 # Last 5 changed files (uncommitted + recent commits)
-LAST_FILES_JSON="$(cd "$REPO_ROOT" && {
+LAST_FILES_JSON="$(cd "$PROJECT_CWD" && {
   (git diff --name-only HEAD 2>/dev/null; git log --name-only --pretty=format: -5 2>/dev/null) \
     | grep -v '^$' | sort -u | head -5 | jq -Rs 'split("\n") | map(select(length>0))'
 } || echo '[]')"
 
 # Last 5 commit SHAs
-LAST_COMMITS_JSON="$(cd "$REPO_ROOT" && git log --pretty=format:'%H' -5 2>/dev/null | jq -Rs 'split("\n") | map(select(length>0))' || echo '[]')"
+LAST_COMMITS_JSON="$(cd "$PROJECT_CWD" && git log --pretty=format:'%H' -5 2>/dev/null | jq -Rs 'split("\n") | map(select(length>0))' || echo '[]')"
 
 # Summary attempt: from stdin or fallback
 SUMMARY="$(printf '%s' "$INPUT" | jq -r '.summary // empty' 2>/dev/null || true)"
@@ -57,7 +59,7 @@ ARCHIVE_PATH="$SESSIONS_DIR/archive/${DATE}-${SESSION_ID}.md"
   echo ""
   echo "## Last 5 Commits"
   echo ""
-  (cd "$REPO_ROOT" && git log --pretty=format:'- %h %s (%an, %ar)' -5 2>/dev/null) || echo "(none)"
+  (cd "$PROJECT_CWD" && git log --pretty=format:'- %h %s (%an, %ar)' -5 2>/dev/null) || echo "(none)"
   echo ""
   echo "## Session End Stdin"
   echo ""

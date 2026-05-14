@@ -2,9 +2,9 @@
 
 setup() {
   export TEST_TMPDIR=$(mktemp -d)
-  REPO_ROOT_SRC="${BATS_TEST_DIRNAME}/../../.."
+  REPO_ROOT_SRC="${BATS_TEST_DIRNAME}/../../../.."
   cd "$TEST_TMPDIR"
-  mkdir -p 05.tasks .omc/learnings scripts
+  mkdir -p templates/project-init/05.tasks .omc/learnings scripts
   cp "$REPO_ROOT_SRC/scripts/archive-prompt.sh" scripts/
   cp "$REPO_ROOT_SRC/scripts/trigram-jaccard.sh" scripts/
   chmod +x scripts/*.sh
@@ -30,7 +30,7 @@ teardown() { rm -rf "$TEST_TMPDIR"; }
   cd "$TEST_TMPDIR"
   run bash scripts/archive-prompt.sh "make a todo list app please today"
   [ "$status" -eq 0 ]
-  grep -q "make a todo list app please today" 05.tasks/prompt.md
+  grep -q "make a todo list app please today" templates/project-init/05.tasks/prompt.md
 }
 
 @test "archive-prompt detects duplicate via Jaccard" {

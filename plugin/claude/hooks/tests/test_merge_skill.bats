@@ -2,12 +2,12 @@
 
 setup() {
   export TEST_TMPDIR=$(mktemp -d)
-  REPO_ROOT_SRC="${BATS_TEST_DIRNAME}/../../.."
+  REPO_ROOT_SRC="${BATS_TEST_DIRNAME}/../../../.."
   cd "$TEST_TMPDIR"
-  mkdir -p .claude/skills .claude-plugin .omc/learnings scripts
+  mkdir -p plugin/claude/skills plugin/claude-plugin .omc/learnings scripts
   cp "$REPO_ROOT_SRC/scripts/merge-skill.sh" scripts/
   chmod +x scripts/merge-skill.sh
-  echo '{"skills":[]}' > .claude-plugin/plugin.json
+  echo '{"skills":[]}' > plugin/claude-plugin/plugin.json
   touch .omc/learnings/_history.jsonl
 
   # Create a sample external skill
@@ -29,13 +29,13 @@ teardown() { rm -rf "$TEST_TMPDIR" "$EXT_PATH"; }
   cd "$TEST_TMPDIR"
   run bash scripts/merge-skill.sh "$EXT_PATH"
   [ "$status" -eq 0 ]
-  [ -f .claude/skills/external-test/SKILL.md ]
+  [ -f plugin/claude/skills/external-test/SKILL.md ]
 }
 
 @test "merge-skill updates plugin.json skills array" {
   cd "$TEST_TMPDIR"
   bash scripts/merge-skill.sh "$EXT_PATH"
-  [ "$(jq -r '.skills[0]' .claude-plugin/plugin.json)" = "external-test" ]
+  [ "$(jq -r '.skills[0]' plugin/claude-plugin/plugin.json)" = "external-test" ]
 }
 
 @test "merge-skill logs to _history.jsonl" {

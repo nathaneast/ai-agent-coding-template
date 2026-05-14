@@ -2,7 +2,7 @@
 
 setup() {
   export TEST_TMPDIR=$(mktemp -d)
-  REPO_ROOT_SRC="${BATS_TEST_DIRNAME}/../../.."
+  REPO_ROOT_SRC="${BATS_TEST_DIRNAME}/../../../.."
   cd "$TEST_TMPDIR"
   mkdir -p scripts .omc/sessions/archive
   cp "$REPO_ROOT_SRC/scripts/resume-session.sh" scripts/

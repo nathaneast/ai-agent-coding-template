@@ -10,9 +10,9 @@ setup() {
   echo '{"counters":{"learnings_added":0},"last_updated":"x"}' > "$TEST_TMPDIR/.omc/learnings/_metrics.json"
 
   # Copy script to test location with modified REPO_ROOT
-  mkdir -p "$TEST_TMPDIR/.claude/hooks/lib"
-  cp "${BATS_TEST_DIRNAME}/../lib/learn-add.sh" "$TEST_TMPDIR/.claude/hooks/lib/learn-add.sh"
-  chmod +x "$TEST_TMPDIR/.claude/hooks/lib/learn-add.sh"
+  mkdir -p "$TEST_TMPDIR/plugin/claude/hooks/lib"
+  cp "${BATS_TEST_DIRNAME}/../lib/learn-add.sh" "$TEST_TMPDIR/plugin/claude/hooks/lib/learn-add.sh"
+  chmod +x "$TEST_TMPDIR/plugin/claude/hooks/lib/learn-add.sh"
 }
 
 teardown() {
@@ -21,20 +21,20 @@ teardown() {
 
 @test "learn-add appends to preferences" {
   cd "$TEST_TMPDIR"
-  run .claude/hooks/lib/learn-add.sh preferences "minimal setup wins"
+  run plugin/claude/hooks/lib/learn-add.sh preferences "minimal setup wins"
   [ "$status" -eq 0 ]
   grep -q "minimal setup wins" .omc/learnings/preferences.md
 }
 
 @test "learn-add rejects invalid category" {
   cd "$TEST_TMPDIR"
-  run .claude/hooks/lib/learn-add.sh invalid "x"
+  run plugin/claude/hooks/lib/learn-add.sh invalid "x"
   [ "$status" -eq 2 ]
 }
 
 @test "learn-add updates _history.jsonl" {
   cd "$TEST_TMPDIR"
-  run .claude/hooks/lib/learn-add.sh patterns "ksbc skeleton works"
+  run plugin/claude/hooks/lib/learn-add.sh patterns "ksbc skeleton works"
   [ "$status" -eq 0 ]
   [ -s .omc/learnings/_history.jsonl ]
   grep -q "patterns" .omc/learnings/_history.jsonl
@@ -42,6 +42,6 @@ teardown() {
 
 @test "learn-add increments metrics counter" {
   cd "$TEST_TMPDIR"
-  .claude/hooks/lib/learn-add.sh glossary "term: definition"
+  plugin/claude/hooks/lib/learn-add.sh glossary "term: definition"
   [ "$(jq -r '.counters.learnings_added' .omc/learnings/_metrics.json)" = "1" ]
 }

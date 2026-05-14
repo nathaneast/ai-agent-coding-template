@@ -5,7 +5,7 @@
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
 METRICS="$REPO_ROOT/.omc/learnings/_metrics.json"
 STATE_DIR="$REPO_ROOT/.omc/state"
 MARKER="$STATE_DIR/USER_CONFIRM_NEEDED"

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# archive-prompt.sh — archive a prompt to 05.tasks/prompt.md with Jaccard dedup
+# archive-prompt.sh — archive a prompt to templates/project-init/05.tasks/prompt.md with Jaccard dedup
 # Usage: archive-prompt.sh <text>
 set -uo pipefail
 
@@ -9,7 +9,7 @@ cd "$REPO_ROOT"
 PROMPT="${1:-}"
 [[ -z "$PROMPT" ]] && { echo "usage: archive-prompt.sh <text>" >&2; exit 1; }
 
-ARCHIVE="$REPO_ROOT/05.tasks/prompt.md"
+ARCHIVE="$REPO_ROOT/templates/project-init/05.tasks/prompt.md"
 PENDING="$REPO_ROOT/.omc/learnings/_pending.jsonl"
 mkdir -p "$REPO_ROOT/05.tasks" "$REPO_ROOT/.omc/learnings"
 touch "$ARCHIVE" "$PENDING"

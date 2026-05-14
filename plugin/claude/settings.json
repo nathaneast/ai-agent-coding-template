@@ -14,7 +14,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/session-start.sh",
+            "command": "plugin/claude/hooks/session-start.sh",
             "timeout": 30
           }
         ]
@@ -26,7 +26,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/session-end.sh",
+            "command": "plugin/claude/hooks/session-end.sh",
             "timeout": 10
           }
         ]
@@ -38,7 +38,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/posttool-openspec-guard.sh",
+            "command": "plugin/claude/hooks/posttool-openspec-guard.sh",
             "timeout": 5
           }
         ]

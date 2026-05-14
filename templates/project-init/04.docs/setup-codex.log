@@ -1,0 +1,16 @@
+# /setup-codex — 2026-05-14T05:50:51Z
+
+- PASS  plugin/codex/config.toml exists
+- PASS  codex_hooks feature enabled
+- PASS  plugin/codex/hooks.json valid JSON
+- PASS  SessionStart in hooks.json
+- PASS  SessionEnd in hooks.json
+- PASS  plugin/codex/hooks/session-start.sh exec
+- PASS  plugin/codex/hooks/session-end.sh exec
+- PASS  plugin/codex-plugin/plugin.json valid
+- PASS  AGENTS.md exists
+- PASS  AGENTS.md mentions CLAUDE.md
+- PASS  Codex wrapper simulation
+
+PASS: 11
+FAIL: 0

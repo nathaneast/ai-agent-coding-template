@@ -175,3 +175,80 @@
 - IDE 통합 (VSCode extension 등) — 현재 Non-Goals (§4-bis)
 - Windows 1차 지원 — 현재 Non-Goals (§4-bis)
 - Codex 외 외부 LLM 어댑터 — 현재 Non-Goals (§4-bis)
+
+---
+
+## v3-global-tool-plan — 2026-05-14
+
+> Planner v3 (글로벌 도구 + 템플릿 저장소 모델) 산출물. 사용자 컨셉 전환 후 첫 작성. v2와 무관한 새 결정 트리.
+
+### 사용자 6개 확정 결정 (뒤집기 금지) — 참조용
+
+- **Q1** = A (GitHub 템플릿 + curl 한 줄 install.sh)
+- **Q2** = A (`/pjt-init` 슬래시 커맨드만, 셸 CLI 불필요)
+- **Q3** = 컨텐츠 폴더만 로컬 (`01.spec/`~`05.tasks/` + `openspec/`), 스킬/훅/커맨드/룰은 전부 글로벌
+- **Q4** = A (`/merge-skill --to-template <local-skill-path>`)
+- **Q5** = A + prefix (레포명 `nathaneast_ai-agent-coding-template`)
+- **Q6** = A (OMC 위 사용자 개인 레이어, OMC 안 건드림)
+
+### Architect/Critic 검토 입력용 미확정 항목 (`[열림]`) — v4 갱신
+
+- [CLOSED v4] Q-A: 글로벌 디렉터리 경로 — **`~/.claude/plugins/nathaneast_aiacht/`** (Architect 동의, OMC 패턴 일치).
+- [CLOSED v4] Q-B (= v4 Q-K): `/pjt-init` 기본 동작 — **strict 기본 + `--merge` README 1순위 노출**. Architect/Critic 2차에서 재확인.
+- [열림] Q-C (= v4 Q-M): 회사 PC GitHub 네트워크 환경 — **사용자가 직접 회사 PC에서 확인 후 회답**.
+- [CLOSED v4] Q-D: v0.1.0 → v0.2.0 전환 — **B (본 레포 git mv + v0.2.0)**. Phase 0.A~0.E 5분할로 안전성 확보.
+- [열림] Q-E: `/learn`, `/consensus` 짧은 이름 vs `/aiacht:learn` prefix — Critic 권고: 짧은 이름 + alias 양쪽 등록. v0.3.0+ RFC 후보.
+- [CLOSED v4] Q-F (= v4 Q-L): install.sh hash 검증 — **v0.2.0 안내, v0.3.0+ 의무화**.
+- [CLOSED v4] Q-G: 자동 commit/push 정책 — **기본 confirm 후 commit, push 안 함. `--auto-commit` opt-in**. (BLOCKER-Critic2)
+- [CLOSED v4] Q-H: `--with-codex` 시 `~/.codex/` 자동 생성.
+- [CLOSED v4] R1: SessionStart 훅 미사용 프로젝트 영향 — 본 하네스 비활성 시 0 byte 종료 + Phase 3 bats 10개.
+- [CLOSED v4] R2: settings.json 머지 안전성 — flock + 백업 + jq deep merge + atomic mv + bats 12개 (Phase 1).
+- [CLOSED v4] R3: /merge-skill --to-template 자동 commit — **기본 confirm 후 commit으로 역전**.
+- [CLOSED v4] R4: curl|sh 보안 — **2단 패턴 의무 + sha256 옵션 + 사용자 deny 룰 준수** (BLOCKER-A2).
+- [열림] R5: 회사 PC `~/.claude/` MDM 차단 — `--target` 옵션 + Non-Goal 명시. 실측은 Q-M과 연결.
+- [열림] R6: OMC SessionStart 훅 우선순위 — 본 하네스 비활성 시 0 byte로 토큰 폭발 회피. 우선순위 API 워크어라운드는 v0.3.0+ RFC.
+
+### v4 신규 미결정 항목
+
+- [열림] **Q-O: CLAUDE_PROJECT_DIR 실측 결과** — Phase 0.0에서 WebFetch + bats 4개로 검증. BLOCKER-A1 해소 후 닫힘 예정.
+- [열림] **Q-P: 자동 secret 스캔 정규식 정밀도** — Phase 4 후 precision/recall 측정. 목표: precision ≥ 0.9. 미달 시 trufflehog v0.3.0+ 이관 결정.
+- [열림] **Q-N: 회사 PC fork 운영 vs 동일 레포 push** — secret 사고 방지를 위해 fork [추천]. 사용자 최종 결정 필요.
+- [열림] **Q-R: v0.2.0 출시 차단 기준** — Phase 4 secret 스캔 false-negative 발견 시 출시 차단 vs v0.3.0+ 이관 — 사용자 결정.
+- [CLOSED v4] **Q-Q: learnings 위치** — 프로젝트 로컬 (`.omc/learnings/`). 듀얼 PC 자동 동기화 없음(의도적).
+
+### v3 → v4 통합 라운드 [CLOSED] 결정 (BLOCKER 6 + MAJOR 9)
+
+- [CLOSED] B-A1: SessionStart 훅 PROJECT_CWD 도입 + Phase 0.0 실측.
+- [CLOSED] B-A2: install.sh 2단 패턴(`curl -o + bash`) 의무.
+- [CLOSED] B-A3/B-C1 (Phase 0): Phase 0을 0.0 + 0.A~0.E 6분할 + 각 게이트 bats 45/45.
+- [CLOSED] B-C1 (paths.sh): `scripts/lib/paths.sh` + `plugin/claude/hooks/lib/paths.sh` 도입, 9개 스크립트 일괄 갱신.
+- [CLOSED] B-C2: /merge-skill --to-template 기본 confirm 후 commit + secret 스캔 + 회사 PC 경고.
+- [CLOSED] B-C3: 본 레포 `.harness-active`에 `mode=source-repo` 표기 + SessionStart 분기.
+- [CLOSED] A-C: 글로벌 git 사전 안전 검사 5항 + 자동 rebase 시도.
+- [CLOSED] A-G: install.sh 멱등성 + --uninstall 백업 복원 + --from-tar fallback.
+- [CLOSED] C-1: "공통 설치"의 정의 박스(§6.0) — 6폴더 + 마커 + .gitignore만.
+- [CLOSED] C-2/D: v0.1.0 자산 보존 매트릭스 7항(§10-bis) + Phase 5 검증 보고서.
+- [CLOSED] C-7: 각 Phase 종료 시 bats 게이트 강제.
+- [CLOSED] Critic 5.2: OMC 토큰 폭발 — 본 하네스 비활성 시 0 byte + 합산 14K 측정.
+- [CLOSED] Critic 8.2: Phase별 시간 추정 명시 (합계 15~18시간).
+- [CLOSED] Critic B: 미니멀 원칙 박스(§3.0) — 본 레포에 추가하는 것 4가지만.
+
+### v4 트레이드오프 (정직한 자기 진단 — Architect/Critic 2차 입력)
+
+- 2단 install vs 한 줄: 1단계 손 vs 사용자 deny 준수 + 무결성.
+- Phase 0 5분할 게이트 vs 단일 commit: 작업 분량 ↑ vs rollback 단위 작음.
+- /merge-skill confirm 기본 vs --auto-commit 기본: 자동화 후퇴 vs secret 사고 방지.
+- learnings 로컬 vs 글로벌: 듀얼 PC 자동 동기화 없음 vs 컨텍스트 정합.
+- 본 레포 source-repo 마커 키워드 vs 별도 마커 파일: 포맷 복잡도 ↑ vs self-dogfood 회귀 0.
+- jq deep merge vs 수동 key add: jq 버전 의존 vs OMC/사용자 deny 무손실.
+
+### v3 Non-Goals (v4 그대로 계승)
+
+- npm 글로벌 배포
+- 셸 CLI 명령 추가
+- OMC 자산 직접 수정/대체
+- Windows 1차 지원
+- 자동 push 또는 자동 PR 생성
+- 마켓플레이스 자동 동기화 RFC (v0.3.0+ 검토)
+- 훅 priority API 워크어라운드 (v0.3.0+ RFC)
+- trufflehog secret 스캔 통합 (Q-P 결과에 따라 v0.3.0+)

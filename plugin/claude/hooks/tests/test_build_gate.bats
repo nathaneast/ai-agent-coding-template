@@ -2,9 +2,9 @@
 
 setup() {
   export TEST_TMPDIR=$(mktemp -d)
-  REPO_ROOT_SRC="${BATS_TEST_DIRNAME}/../../.."
+  REPO_ROOT_SRC="${BATS_TEST_DIRNAME}/../../../.."
   cd "$TEST_TMPDIR"
-  mkdir -p scripts .omc/state .claude/hooks/tests
+  mkdir -p scripts .omc/state plugin/claude/hooks/tests
   cp "$REPO_ROOT_SRC/scripts/build-iteration-gate.sh" scripts/
   chmod +x scripts/build-iteration-gate.sh
   git init -q

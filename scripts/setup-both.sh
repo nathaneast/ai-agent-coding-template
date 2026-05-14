@@ -14,8 +14,8 @@ codex_status=$?
 
 echo ""
 echo "=== diff: Claude vs Codex SessionStart output ==="
-bash .claude/hooks/session-start.sh > /tmp/claude-out.$$  2>/dev/null
-bash .codex/hooks/session-start.sh > /tmp/codex-out.$$ 2>/dev/null
+bash plugin/claude/hooks/session-start.sh > /tmp/claude-out.$$  2>/dev/null
+bash plugin/codex/hooks/session-start.sh > /tmp/codex-out.$$ 2>/dev/null
 if diff -q /tmp/claude-out.$$ /tmp/codex-out.$$ >/dev/null; then
   echo "✅ Identical output (dual model symmetric)"
   diff_status=0
