@@ -1,0 +1,5 @@
+# Codex CLI 프로젝트 설정 (Codex CLI v0.124.0+ 호환)
+# 참고: Codex v0.124.0의 hooks 버그 회피를 위해 hooks 설정은 별도 .codex/hooks.json 파일에 분리
+
+[features]
+codex_hooks = true
