@@ -51,10 +51,21 @@ claude
 /pjt-init
 ```
 
-**`/pjt-init`이 생성하는 것**:
-- `01.spec/`, `02.workflow/`, `03.archive/`, `04.docs/`, `05.tasks/`, `openspec/` 6 폴더
-- `.harness-active` 마커 (SessionStart 훅 활성화 신호)
-- `.gitignore`에 `.env` 보호 룰
+**`/pjt-init` 호출 후 로컬 프로젝트 최상위에 자동 생성**:
+
+```
+~/projects/my-app/
+├── 01.spec/          ← PRD, ADR, 유저 스토리 (최상위 직접 생성)
+├── 02.workflow/      ← SOP
+├── 03.archive/       ← 완료 작업 아카이브
+├── 04.docs/          ← RUNBOOK, RELEASE_NOTES, HANDOFF
+├── 05.tasks/         ← todo.md, prompt.md, feedback.md
+├── openspec/         ← 명세 워크플로우
+├── .harness-active   ← SessionStart 훅 활성화 마커
+└── .gitignore        ← .env 보호 자동 추가
+```
+
+> **중요**: 폴더는 **로컬 프로젝트 최상위에 직접** 생성됩니다. `templates/project-init/` 같은 중첩 경로 안에 들어가지 않습니다. 본 레포의 `templates/project-init/`은 *글로벌 도구가 보관하는 원본 위치*일 뿐, 사용자 프로젝트로 복사될 때는 최상위로 펼쳐집니다.
 
 다음 세션부터 글로벌 SessionStart 훅이 `.harness-active` 감지하여 5 스킬 자동 주입.
 
@@ -189,8 +200,10 @@ git pull --rebase  # 또는 git pull --no-ff
 
 ## 8. 폴더 구조
 
+> 본 섹션은 **본 레포(글로벌 도구 소스)** 의 구조다. 로컬 프로젝트는 §2 참조 (최상위 6 폴더).
+
 ```
-nathaneast-ai-agent-coding-template/
+nathaneast-ai-agent-coding-template/        ← 본 레포 (글로벌 도구 소스)
 ├── install.sh              ← 글로벌 설치 진입점
 ├── README.md               ← 이 파일
 ├── CLAUDE.md               ← 본 레포 작업 시 적용 규칙 (링크만)
