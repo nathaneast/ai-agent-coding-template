@@ -29,3 +29,6 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# OMC 활성 세션 상태 (재현 불가, 개인 정보)
+.omc/sessions/*.json
