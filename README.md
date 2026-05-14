@@ -17,7 +17,7 @@
                           ↓
               다음 세션부터 SessionStart 훅이 5 스킬 자동 컨텍스트 주입
 
-[일상 작업] 15개 슬래시 커맨드 + 11 스킬 + native memory("저장해") + /ss-re 스냅샷
+[일상 작업] 13개 슬래시 커맨드 + 11 스킬 + native memory("저장해") + /ss-re 스냅샷
 
 [스킬 공유] /merge-skill <path> --push  →  글로벌 레포에 promote → 다른 PC update.sh로 동기화
 
@@ -75,7 +75,7 @@ claude
 
 ---
 
-## 3. 15개 슬래시 커맨드
+## 3. 13개 슬래시 커맨드
 
 ### 환경 셋업 (4)
 | 커맨드 | 설명 |
@@ -90,12 +90,10 @@ claude
 |--------|------|
 | `/ss-re` | 현재 세션 컨텍스트 스냅샷 → `.omc/snapshot.md` 저장 → 다음 세션 자동 회수 |
 
-### 일상 워크플로우 (3)
+### 일상 워크플로우 (1)
 | 커맨드 | 설명 |
 |--------|------|
 | `/db-ck <지시>` | 사용자 지시를 5요소(목표/범위/수용/제약/위험)로 분해 + 더블체크 |
-| `/consensus <task>` | Claude 작업 → Codex 리뷰 → 합의 도달까지 자동 루프 (max 4) |
-| `/build <PRD>` | PRD 기반 ralph 자동 빌드 (TDD + consensus 강제) |
 
 ### Git + 배포 (5) — 새 프로젝트에서 일상 사용
 | 커맨드 | 설명 |
@@ -124,8 +122,8 @@ claude
 - `env-security` — .env 보안 절대 규칙
 - `ss-re` — 세션 스냅샷 저장/회수
 
-### 명시 호출 (6개, 슬래시 커맨드로 트리거)
-- `double-check`, `merge-skill`, `build`
+### 명시 호출 (6개)
+- `double-check`, `merge-skill`
 - `openspec-propose`, `openspec-explore`, `openspec-apply`, `openspec-archive`
 
 ---

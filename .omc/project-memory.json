@@ -114,6 +114,12 @@
       "type": "file"
     },
     {
+      "path": "scripts/setup-claude.sh",
+      "accessCount": 5,
+      "lastAccessed": 1778742794459,
+      "type": "file"
+    },
+    {
       "path": ".claude/hooks/lib/inject.sh",
       "accessCount": 4,
       "lastAccessed": 1778720309966,
@@ -138,6 +144,12 @@
       "type": "file"
     },
     {
+      "path": "scripts/setup-codex.sh",
+      "accessCount": 4,
+      "lastAccessed": 1778742931095,
+      "type": "file"
+    },
+    {
       "path": ".claude/hooks/tests/test_inject.bats",
       "accessCount": 3,
       "lastAccessed": 1778720471466,
@@ -147,12 +159,6 @@
       "path": ".codex-plugin/plugin.json",
       "accessCount": 3,
       "lastAccessed": 1778724283579,
-      "type": "file"
-    },
-    {
-      "path": "scripts/setup-claude.sh",
-      "accessCount": 3,
-      "lastAccessed": 1778737645723,
       "type": "file"
     },
     {
@@ -243,12 +249,6 @@
       "path": ".claude/commands/setup-codex.md",
       "accessCount": 2,
       "lastAccessed": 1778729438670,
-      "type": "file"
-    },
-    {
-      "path": "scripts/setup-codex.sh",
-      "accessCount": 2,
-      "lastAccessed": 1778737638782,
       "type": "file"
     },
     {

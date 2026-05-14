@@ -1,22 +1,22 @@
-# /setup-claude — 2026-05-14T05:50:51Z
+# /setup-claude — 2026-05-14T07:17:34Z
 
 - PASS  settings.json exists
 - PASS  settings.json valid JSON
 - PASS  SessionStart hook registered
-- PASS  SessionEnd hook registered
+- PASS  SessionEnd hook NOT present
 - PASS  session-start.sh executable
-- PASS  session-end.sh executable
 - PASS  skill branch-strategy/SKILL.md
 - PASS  skill tdd-loop/SKILL.md
 - PASS  skill consensus-loop/SKILL.md
 - PASS  skill env-security/SKILL.md
-- PASS  skill session-index/SKILL.md
+- PASS  skill ss-re/SKILL.md
 - PASS  plugin/claude-plugin/plugin.json valid
-- PASS  .omc/learnings/preferences.md
-- PASS  .omc/learnings/pitfalls.md
-- PASS  .omc/learnings/patterns.md
-- PASS  .omc/learnings/glossary.md
-- PASS  .omc/learnings/_metrics.json valid
+- PASS  plugin version 0.2.1
+- PASS  command ss-re registered
+- PASS  rules/memory.md exists
+- PASS  templates CLAUDE.md exists
+- PASS  templates CLAUDE.local.md exists
+- PASS  templates .gitignore exists
 - PASS  bats tests pass
 - PASS  SessionStart simulation
 
