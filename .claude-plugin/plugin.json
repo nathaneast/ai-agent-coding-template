@@ -6,16 +6,42 @@
   "homepage": "https://github.com/yun-company-coding/ai-agent-coding-template",
   "repository": "https://github.com/yun-company-coding/ai-agent-coding-template",
   "license": "MIT",
-  "keywords": ["claude-code", "codex", "harness", "tdd", "openspec", "consensus-loop"],
-  "requires": { "claude-code": ">=2.0.0" },
+  "keywords": [
+    "claude-code",
+    "codex",
+    "harness",
+    "tdd",
+    "openspec",
+    "consensus-loop"
+  ],
+  "requires": {
+    "claude-code": ">=2.0.0"
+  },
   "skills": [
-    "branch-strategy", "tdd-loop", "consensus-loop", "env-security", "session-index",
-    "learn", "double-check",
-    "openspec-propose", "openspec-explore", "openspec-apply", "openspec-archive"
+    "branch-strategy",
+    "tdd-loop",
+    "consensus-loop",
+    "env-security",
+    "session-index",
+    "learn",
+    "double-check",
+    "openspec-propose",
+    "openspec-explore",
+    "openspec-apply",
+    "openspec-archive"
   ],
   "commands": [
-    "learn", "double-check", "consensus", "resume-session",
-    "setup-claude", "setup-codex", "setup-both"
+    "learn",
+    "double-check",
+    "consensus",
+    "resume-session",
+    "setup-claude",
+    "setup-codex",
+    "setup-both"
   ],
-  "hooks": ["SessionStart", "SessionEnd", "PostToolUse"]
+  "hooks": [
+    "SessionStart",
+    "SessionEnd",
+    "PostToolUse"
+  ]
 }
