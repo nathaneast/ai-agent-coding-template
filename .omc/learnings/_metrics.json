@@ -2,12 +2,12 @@
   "version": "0.1.0",
   "counters": {
     "learnings_added": 2,
-    "learnings_recalled": 0,
+    "learnings_recalled": 56,
     "double_check_invoked": 2,
     "consensus_first_pass": 1,
     "consensus_loops_total": 5,
     "pending_resolved": 0,
     "pending_unresolved": 0
   },
-  "last_updated": "2026-05-14T01:40:59Z"
+  "last_updated": "2026-05-14T01:46:38Z"
 }

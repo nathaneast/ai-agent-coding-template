@@ -1,0 +1,1102 @@
+[
+  {
+    "sessionId": "P5-5-6",
+    "timestamp": "2026-05-14T01:46:31Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s6",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-6.md"
+  },
+  {
+    "sessionId": "P5-5-7",
+    "timestamp": "2026-05-14T01:46:31Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s7",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-7.md"
+  },
+  {
+    "sessionId": "P5-5-8",
+    "timestamp": "2026-05-14T01:46:32Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s8",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-8.md"
+  },
+  {
+    "sessionId": "P5-5-9",
+    "timestamp": "2026-05-14T01:46:32Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s9",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-9.md"
+  },
+  {
+    "sessionId": "P5-5-10",
+    "timestamp": "2026-05-14T01:46:32Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s10",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-10.md"
+  },
+  {
+    "sessionId": "P5-5-11",
+    "timestamp": "2026-05-14T01:46:32Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s11",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-11.md"
+  },
+  {
+    "sessionId": "P5-5-12",
+    "timestamp": "2026-05-14T01:46:32Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s12",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-12.md"
+  },
+  {
+    "sessionId": "P5-5-13",
+    "timestamp": "2026-05-14T01:46:32Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s13",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-13.md"
+  },
+  {
+    "sessionId": "P5-5-14",
+    "timestamp": "2026-05-14T01:46:32Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s14",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-14.md"
+  },
+  {
+    "sessionId": "P5-5-15",
+    "timestamp": "2026-05-14T01:46:33Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s15",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-15.md"
+  },
+  {
+    "sessionId": "P5-5-16",
+    "timestamp": "2026-05-14T01:46:33Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s16",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-16.md"
+  },
+  {
+    "sessionId": "P5-5-17",
+    "timestamp": "2026-05-14T01:46:33Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s17",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-17.md"
+  },
+  {
+    "sessionId": "P5-5-18",
+    "timestamp": "2026-05-14T01:46:33Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s18",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-18.md"
+  },
+  {
+    "sessionId": "P5-5-19",
+    "timestamp": "2026-05-14T01:46:33Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s19",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-19.md"
+  },
+  {
+    "sessionId": "P5-5-20",
+    "timestamp": "2026-05-14T01:46:33Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s20",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-20.md"
+  },
+  {
+    "sessionId": "P5-5-21",
+    "timestamp": "2026-05-14T01:46:33Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s21",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-21.md"
+  },
+  {
+    "sessionId": "P5-5-22",
+    "timestamp": "2026-05-14T01:46:33Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s22",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-22.md"
+  },
+  {
+    "sessionId": "P5-5-23",
+    "timestamp": "2026-05-14T01:46:34Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s23",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-23.md"
+  },
+  {
+    "sessionId": "P5-5-24",
+    "timestamp": "2026-05-14T01:46:34Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s24",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-24.md"
+  },
+  {
+    "sessionId": "P5-5-25",
+    "timestamp": "2026-05-14T01:46:34Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s25",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-25.md"
+  },
+  {
+    "sessionId": "P5-5-26",
+    "timestamp": "2026-05-14T01:46:34Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s26",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-26.md"
+  },
+  {
+    "sessionId": "P5-5-27",
+    "timestamp": "2026-05-14T01:46:34Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s27",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-27.md"
+  },
+  {
+    "sessionId": "P5-5-28",
+    "timestamp": "2026-05-14T01:46:34Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s28",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-28.md"
+  },
+  {
+    "sessionId": "P5-5-29",
+    "timestamp": "2026-05-14T01:46:34Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s29",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-29.md"
+  },
+  {
+    "sessionId": "P5-5-30",
+    "timestamp": "2026-05-14T01:46:35Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s30",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-30.md"
+  },
+  {
+    "sessionId": "P5-5-31",
+    "timestamp": "2026-05-14T01:46:35Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s31",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-31.md"
+  },
+  {
+    "sessionId": "P5-5-32",
+    "timestamp": "2026-05-14T01:46:35Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s32",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-32.md"
+  },
+  {
+    "sessionId": "P5-5-33",
+    "timestamp": "2026-05-14T01:46:35Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s33",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-33.md"
+  },
+  {
+    "sessionId": "P5-5-34",
+    "timestamp": "2026-05-14T01:46:35Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s34",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-34.md"
+  },
+  {
+    "sessionId": "P5-5-35",
+    "timestamp": "2026-05-14T01:46:35Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s35",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-35.md"
+  },
+  {
+    "sessionId": "P5-5-36",
+    "timestamp": "2026-05-14T01:46:35Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s36",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-36.md"
+  },
+  {
+    "sessionId": "P5-5-37",
+    "timestamp": "2026-05-14T01:46:35Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s37",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-37.md"
+  },
+  {
+    "sessionId": "P5-5-38",
+    "timestamp": "2026-05-14T01:46:36Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s38",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-38.md"
+  },
+  {
+    "sessionId": "P5-5-39",
+    "timestamp": "2026-05-14T01:46:36Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s39",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-39.md"
+  },
+  {
+    "sessionId": "P5-5-40",
+    "timestamp": "2026-05-14T01:46:36Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s40",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-40.md"
+  },
+  {
+    "sessionId": "P5-5-41",
+    "timestamp": "2026-05-14T01:46:36Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s41",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-41.md"
+  },
+  {
+    "sessionId": "P5-5-42",
+    "timestamp": "2026-05-14T01:46:36Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s42",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-42.md"
+  },
+  {
+    "sessionId": "P5-5-43",
+    "timestamp": "2026-05-14T01:46:36Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s43",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-43.md"
+  },
+  {
+    "sessionId": "P5-5-44",
+    "timestamp": "2026-05-14T01:46:36Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s44",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-44.md"
+  },
+  {
+    "sessionId": "P5-5-45",
+    "timestamp": "2026-05-14T01:46:37Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s45",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-45.md"
+  },
+  {
+    "sessionId": "P5-5-46",
+    "timestamp": "2026-05-14T01:46:37Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s46",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-46.md"
+  },
+  {
+    "sessionId": "P5-5-47",
+    "timestamp": "2026-05-14T01:46:37Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s47",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-47.md"
+  },
+  {
+    "sessionId": "P5-5-48",
+    "timestamp": "2026-05-14T01:46:37Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s48",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-48.md"
+  },
+  {
+    "sessionId": "P5-5-49",
+    "timestamp": "2026-05-14T01:46:37Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s49",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-49.md"
+  },
+  {
+    "sessionId": "P5-5-50",
+    "timestamp": "2026-05-14T01:46:37Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s50",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-50.md"
+  },
+  {
+    "sessionId": "P5-5-51",
+    "timestamp": "2026-05-14T01:46:37Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s51",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-51.md"
+  },
+  {
+    "sessionId": "P5-5-52",
+    "timestamp": "2026-05-14T01:46:37Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s52",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-52.md"
+  },
+  {
+    "sessionId": "P5-5-53",
+    "timestamp": "2026-05-14T01:46:38Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s53",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-53.md"
+  },
+  {
+    "sessionId": "P5-5-54",
+    "timestamp": "2026-05-14T01:46:38Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s54",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-54.md"
+  },
+  {
+    "sessionId": "P5-5-55",
+    "timestamp": "2026-05-14T01:46:38Z",
+    "branch": "dev",
+    "cwd": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template",
+    "summary": "s55",
+    "lastFiles": [
+      ".claude/commands/consensus.md",
+      ".claude/commands/double-check.md",
+      ".claude/hooks/lib/consensus-loop.sh",
+      ".claude/hooks/lib/double-check-incr.sh",
+      ".claude/hooks/session-end.sh"
+    ],
+    "lastCommits": [
+      "980889d38fc3436562aec31b860f02b20bd8c6d6",
+      "d6401599fd2f20f59c1b4115da2507f74d1f7bce",
+      "cfd34912b875c3bf914dc4fc834c5c467d1d3417",
+      "a38aeb1f81ee2315e39e606e11807a2476f512ff",
+      "ecf558f1af83b163793646007414efcd9688b5da"
+    ],
+    "archivePath": "/Users/nathaneast/Desktop/coding_project/ai-agent-coding-template/.omc/sessions/archive/2026-05-14-P5-5-55.md"
+  }
+]
