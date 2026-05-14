@@ -1,75 +1,50 @@
 ---
-description: 현재 세션 진행상황을 한눈에 보고
-allowed-tools: TaskList, TaskGet, Bash
+description: /solo 진행 상황 즉시 출력
+allowed-tools:
+  - Read
+  - Bash
 ---
 
-# /pg — 진행상황 보고 (Progress)
+# /pg — Solo 진행 상황 출력
 
-사용자에게 **현재 세션의 진행상황**을 간결하게 보고합니다.
+`.omc/state/` 의 세 파일을 읽어 현재 `/solo` 실행 상태를 한눈에 출력한다.
 
-## 출력 형식 (한국어, 구조화된 마크다운)
+## 실행 절차
 
-다음 섹션을 순서대로 작성합니다. 정보가 없는 섹션은 생략합니다.
+1. 아래 세 파일 존재 여부 확인:
+   - `.omc/state/solo-criteria.json`
+   - `.omc/state/solo-state.json`
+   - `.omc/state/solo-budget.json`
+2. 하나라도 없으면 즉시 출력:
+   ```
+   ❌ /solo 실행 중인 작업 없음
+   ```
+3. 모두 있으면 Read 도구로 읽은 뒤 아래 형식으로 출력한다.
 
-### 1. 🎯 현재 작업 (Now)
-- 지금 이 순간 무엇을 하고 있는지 1줄
-- 어떤 파일/모듈/기능을 다루는지
-
-### 2. ✅ 완료 (Done)
-- 이번 세션에서 끝낸 항목들 (최근 → 이전 순)
-- 각 항목 1줄, 핵심 결과만 (어떤 파일이 어떻게 바뀌었는지)
-
-### 3. 🚧 진행 중 (In Progress)
-- 현재 in_progress 상태이거나 부분적으로 시작한 작업
-- TaskList에 있는 in_progress 항목 우선
-
-### 4. 📋 남은 작업 (Pending)
-- TaskList의 pending 항목
-- 사용자가 명시적으로 요청한 후속 작업
-
-### 5. ⚠️ 블로커/주의 (Blockers)
-- 막힌 지점, 사용자 결정이 필요한 항목, 발견한 위험
-- 없으면 생략
-
-### 6. 💡 다음 추천 액션 (Next)
-- 1~2개의 명확한 다음 단계 제안
-- "이걸 할까요?" 형태로 사용자가 yes/no 답할 수 있게
-
-## 동작 지침
-
-1. **TaskList 먼저 확인** — TaskList 도구로 현재 태스크 상태를 가져온다.
-2. **대화 컨텍스트 스캔** — 최근 메시지에서 완료/실패/결정 사항을 추출한다.
-3. **추측 금지** — 실제로 한 일만 보고. "아마 했을 것"은 절대 안 됨.
-4. **간결하게** — 각 항목 1줄. 장황한 설명은 사용자가 추가 질문할 때만.
-5. **파일 경로는 file_path:line_number 형태**로 기재해 클릭 가능하게.
-6. **완료 클레임은 증거와 함께** — "X 완료"라고 적을 땐 어떤 파일/커밋/테스트로 검증되었는지 함께.
-
-## 예시 출력
+## 출력 형식
 
 ```
-🎯 현재 작업
-- pg 스킬을 ~/.claude/commands/에 작성 중
-
-✅ 완료
-- ~/.claude/commands/pg.md 생성 (진행상황 보고 슬래시 커맨드)
-- ~/.claude/skills/pg/SKILL.md 생성 (스킬 등록)
-
-🚧 진행 중
-- (없음)
-
-📋 남은 작업
-- 첫 /pg 호출 테스트
-
-💡 다음 추천 액션
-- 새 세션에서 /pg 입력해 동작 확인하시겠어요?
+🚧 /solo 진행 중 (run_id: {run_id})
+Phase: {phase} / Round {round}
+시간: {elapsed} / 24h
+비용: ${cost_usd} / $20  {downgrade_warning}
+Criteria: {pass_count}/{total} PASS, {in_progress_count} IN_PROGRESS, {deferred_count} DEFERRED
+  ✅ {passed_ids}
+  🔄 {in_progress_ids}
+  ⏸ {deferred_ids}
+직전 reflection: {last_reflection}
+예상 종료: {eta}
 ```
 
-## 호출 방법
+## 필드 규칙
 
-| 입력 | 동작 |
-|------|------|
-| `/pg` | 전체 진행상황 보고 |
-| `/pg 짧게` | Now/Next만 출력 (2~4줄) |
-| `/pg 상세` | 각 섹션 + 변경된 파일 diff 요약 포함 |
-
-인자는 `$ARGUMENTS`로 전달됩니다. 비어있으면 기본(전체) 모드.
+- `run_id`: `solo-criteria.json` 의 `run_id`
+- `phase`, `round`: `solo-state.json` 의 `current_phase`, `current_round`
+- `elapsed`: `solo-budget.json` 의 `elapsed_human` (예: `5h 12m`)
+- `cost_usd`: `solo-budget.json` 의 `cost_usd`
+- `downgrade_warning`: cost_usd >= 14 → `⚠ 다운그레이드 임박 ($15)` / >= 17 → `⚠ haiku 전환 임박 ($18)` / 미만 → 공백
+- `passed_ids`: status == "passed" 인 항목 — id + critical이면 `(critical)` 표기
+- `in_progress_ids`: status == "in_progress" 인 항목 — id, priority, attempts, current_agent
+- `deferred_ids`: status == "deferred" 인 항목 — id + `(manual, deferred)`
+- `last_reflection`: `solo-state.json` 의 `last_reflection` (없으면 `-`)
+- `eta`: `solo-budget.json` 의 `eta` (없으면 `-`)
