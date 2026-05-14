@@ -58,3 +58,14 @@ if [[ -f "$SESSION_INDEX" ]]; then
 fi
 
 log_info "SessionStart: injected ~${total_tokens} tokens"
+
+# USER_CONFIRM_NEEDED marker (Codex consensus fallback stage 3)
+MARKER="$REPO_ROOT/.omc/state/USER_CONFIRM_NEEDED"
+if [[ -f "$MARKER" ]]; then
+  printf '\n---\n\n## ⚠️ USER CONFIRM NEEDED\n\n'
+  printf 'Consensus fallback stage 3 was triggered in a previous session.\n\n'
+  printf '```json\n'
+  cat "$MARKER"
+  printf '\n```\n\n'
+  printf 'Resolve and remove the marker: `rm .omc/state/USER_CONFIRM_NEEDED`\n\n'
+fi
