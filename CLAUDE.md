@@ -19,6 +19,7 @@
 - 📌 [consensus-loop](.claude/skills/consensus-loop/SKILL.md) — Codex 합의 루프 (필수)
 - 📌 [env-security](.claude/skills/env-security/SKILL.md) — .env 절대 규칙
 - 📌 [session-index](.claude/skills/session-index/SKILL.md) — 세션 인덱스 + /resume-session
+- 📌 [user-helper](.claude/skills/user-helper/SKILL.md) — 사용자 비효율 자동 감지 → 1줄 제안 (반복/장황/좌절 신호)
 
 ## 본 프로젝트 특별 정책
 
