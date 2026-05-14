@@ -1,49 +1,68 @@
-# ai-agent-coding-template
+# nathaneast-ai-agent-coding-template
 
-> 개인 맞춤형 AI 코딩 하네스 — Claude 메인 워커 + Codex 리뷰어 비대칭 듀얼 모델
+> 개인 AI 코딩 하네스 — Claude Code (+ Codex) 글로벌 도구 + 프로젝트 템플릿
 
 ## 핵심
 
-- **SessionStart 훅 자동 주입**: 매 세션 5개 워크플로우 스킬 자동 컨텍스트화 (~7K 토큰 budget)
-- **`/learn` 영속 학습**: `.omc/learnings/{preferences,pitfalls,patterns,glossary}.md` 누적, 카테고리별 자동 트림
-- **`/consensus` 합의 루프**: Claude 작업 → Codex 리뷰 → max-loops 4 + 3단 폴백
-- **`/resume-session N`**: N개 전 세션 컨텍스트 복원 (problem.md 해결)
-- **`/setup-claude` / `/setup-codex` / `/setup-both`**: 양쪽 어댑터 검증
-- **`/double-check`**: 사용자 지시 5요소 더블체크
-- **자동 프롬프트 아카이빙**: trigram + Jaccard 0.7 중복 감지, 3회 promotion
-- **`/merge-skill`**: 로컬 스킬 본 하네스에 흡수
-- **`/build`**: PRD 기반 ralph 자동 빌드 + iteration gate
+- **글로벌 SessionStart 훅**: 매 세션 5 스킬 자동 컨텍스트 주입 (마커 있는 프로젝트만)
+- **`/pjt-init`**: 새 프로젝트에 01.spec ~ 05.tasks + openspec 폴더 생성
+- **`/merge-skill <path>`**: 로컬 스킬을 글로벌 본 레포로 promote + 자동 commit
+- **`/mirror-personal`**: 개인 GitHub 계정에 미러 푸시
+- **9개 슬래시 커맨드 + 13 스킬 + 45 bats 테스트**
 
-## 빠른 시작
+## 설치
 
 ```bash
-# 1. 셋업 검증
-bash scripts/setup-both.sh
-
-# 2. 테스트 통과 확인
-bats .claude/hooks/tests/
-
-# 3. SessionStart 훅 작동 확인 (~7K 토큰)
-bash .claude/hooks/session-start.sh | wc -c
+curl -fsSL https://raw.githubusercontent.com/yunjadong-team/nathaneast-ai-agent-coding-template/main/install.sh -o /tmp/install.sh
+bash /tmp/install.sh
 ```
 
-## 폴더 구조
+설치 위치: `~/.claude/plugins/nathaneast-aiacht/`
+글로벌 settings.json에 SessionStart 훅 자동 등록.
 
-- `01.spec/` PRD, ADR
-- `02.workflow/` SOP
-- `04.docs/` RUNBOOK, RELEASE_NOTES, HANDOFF, ONBOARDING
-- `05.tasks/` todo, prompt 아카이브
-- `openspec/` 구조화 명세 (propose → apply → archive)
-- `.claude/`, `.codex/` 도구별 hooks/commands/skills/rules
-- `.omc/` 도구 중립 영속 메모리 (learnings, sessions, plans)
-
-## 회사계정 복제
+## 사용
 
 ```bash
-bash scripts/clone-to-company.sh ~/company-coding/my-new-project
+# 새 프로젝트 시작
+mkdir ~/projects/my-app && cd ~/projects/my-app
+claude   # Claude Code 시작 → 안에서 /pjt-init 호출
+# 01.spec/ ~ 05.tasks/ + openspec/ + .harness-active 마커 자동 생성
+
+# 다음 세션부터 SessionStart 훅이 5 스킬 자동 주입
 ```
 
-상세: `04.docs/ONBOARDING.md`
+## 업데이트
+
+```bash
+bash ~/.claude/plugins/nathaneast-aiacht/scripts/update.sh
+# git pull --ff-only로 글로벌 도구 최신화
+```
+
+## 스킬 공유 (역전파)
+
+```bash
+# A 프로젝트에서 만든 스킬을 글로벌 + 다른 PC와 공유
+/merge-skill ~/projects/A-app/.claude/skills/awesome
+# → 글로벌 promote + git commit
+git -C ~/.claude/plugins/nathaneast-aiacht push origin main
+
+# 또는 한번에:
+/merge-skill ~/projects/A-app/.claude/skills/awesome --push
+```
+
+## 개인 GitHub 미러
+
+```bash
+/mirror-personal
+# 회사 레포 → 개인 레포 동시 동기화
+```
+
+## 구조
+
+- `plugin/` — 글로벌 설치 대상 (스킬/훅/커맨드/룰)
+- `templates/project-init/` — `/pjt-init`이 새 프로젝트에 복사할 컨텐츠
+- `scripts/` — install, update, pjt-init, merge-skill, mirror-personal 등
+- `.omc/plans/` — v0.2.0 plan 보존
 
 ## License
 
