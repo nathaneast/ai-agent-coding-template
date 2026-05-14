@@ -36,7 +36,7 @@
     "setup-claude",
     "setup-codex",
     "setup-both",
-    "db-ck",
+    "dbck",
     "ss-re",
     "gi",
     "cm",
