@@ -26,7 +26,7 @@ source "$SCRIPT_DIR/lib/token-budget.sh"
 TOKEN_LIMIT=7000
 # Skills live in the plugin (not the project)
 SKILLS_DIR="$PLUGIN_ROOT/claude/skills"
-CORE_SKILLS=(branch-strategy tdd-loop consensus-loop env-security session-index)
+CORE_SKILLS=(branch-strategy tdd-loop consensus-loop env-security session-index feedback-capture)
 
 log_info "SessionStart: injecting core skills"
 
