@@ -12,18 +12,6 @@
           }
         ]
       }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".codex/hooks/session-end.sh",
-            "timeout": 10
-          }
-        ]
-      }
     ]
   }
 }

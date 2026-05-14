@@ -1,0 +1,10 @@
+# .env protection (added by /pjt-init)
+.env
+.env.*
+!.env.example
+
+# Personal Claude memory (do not commit)
+.claude/CLAUDE.local.md
+
+# Session snapshot (작업 인계용, 작업 완료 후 삭제 가능)
+.omc/snapshot.md

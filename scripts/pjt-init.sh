@@ -49,7 +49,20 @@ EOF
   echo "→ .harness-active 마커 생성"
 fi
 
-# .gitignore .env 보호
+# CLAUDE.md (로컬 메모리, git 추적) - 기존 없을 때만 생성
+if [[ ! -f "$PROJECT_CWD/CLAUDE.md" ]]; then
+  cp "$GLOBAL_TEMPLATES/CLAUDE.md" "$PROJECT_CWD/CLAUDE.md"
+  echo "→ CLAUDE.md 생성 (로컬 메모리)"
+fi
+
+# .claude/CLAUDE.local.md (개인 메모리, gitignore)
+mkdir -p "$PROJECT_CWD/.claude"
+if [[ ! -f "$PROJECT_CWD/.claude/CLAUDE.local.md" ]]; then
+  cp "$GLOBAL_TEMPLATES/.claude/CLAUDE.local.md" "$PROJECT_CWD/.claude/CLAUDE.local.md"
+  echo "→ .claude/CLAUDE.local.md 생성 (개인 메모리)"
+fi
+
+# .gitignore .env 보호 + memory/snapshot 제외
 GITIGNORE="$PROJECT_CWD/.gitignore"
 touch "$GITIGNORE"
 if ! grep -q "^\.env$" "$GITIGNORE" 2>/dev/null; then
@@ -59,8 +72,14 @@ if ! grep -q "^\.env$" "$GITIGNORE" 2>/dev/null; then
 .env
 .env.*
 !.env.example
+
+# Personal Claude memory (do not commit)
+.claude/CLAUDE.local.md
+
+# Session snapshot (작업 인계용, 작업 완료 후 삭제 가능)
+.omc/snapshot.md
 EOF
-  echo "→ .gitignore에 .env 보호 추가"
+  echo "→ .gitignore에 .env 보호 + memory/snapshot 제외 추가"
 fi
 
 echo ""

@@ -1,7 +1,7 @@
 {
   "name": "nathaneast-ai-agent-coding-template",
-  "version": "0.2.0",
-  "description": "Personal AI coding harness — Claude Code (+ Codex CLI) global tool + project template. /pjt-init / /merge-skill / /mirror-personal / 14 slash commands / 13 skills.",
+  "version": "0.2.1",
+  "description": "Personal AI coding harness — Claude Code (+ Codex CLI) global tool with native memory + /ss-re snapshot.",
   "author": "nathaneast",
   "homepage": "https://github.com/yunjadong-team/nathaneast-ai-agent-coding-template",
   "repository": "https://github.com/yunjadong-team/nathaneast-ai-agent-coding-template",
@@ -23,8 +23,7 @@
     "tdd-loop",
     "consensus-loop",
     "env-security",
-    "session-index",
-    "learn",
+    "ss-re",
     "double-check",
     "merge-skill",
     "build",
@@ -39,9 +38,8 @@
     "setup-codex",
     "setup-both",
     "db-ck",
-    "learn",
+    "ss-re",
     "consensus",
-    "resume-session",
     "build",
     "gi",
     "cm",
@@ -53,7 +51,6 @@
   ],
   "hooks": [
     "SessionStart",
-    "SessionEnd",
     "PostToolUse"
   ]
 }

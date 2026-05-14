@@ -12,9 +12,8 @@ check "plugin/codex/config.toml exists" test -f plugin/codex/config.toml
 check "codex_hooks feature enabled" grep -q "codex_hooks = true" plugin/codex/config.toml
 check "plugin/codex/hooks.json valid JSON" jq -e . plugin/codex/hooks.json
 check "SessionStart in hooks.json" bash -c 'jq -e ".hooks.SessionStart[0]" plugin/codex/hooks.json'
-check "SessionEnd in hooks.json" bash -c 'jq -e ".hooks.SessionEnd[0]" plugin/codex/hooks.json'
+check "SessionEnd NOT in hooks.json" bash -c '! jq -e ".hooks.SessionEnd" plugin/codex/hooks.json'
 check "plugin/codex/hooks/session-start.sh exec" test -x plugin/codex/hooks/session-start.sh
-check "plugin/codex/hooks/session-end.sh exec" test -x plugin/codex/hooks/session-end.sh
 check "plugin/codex-plugin/plugin.json valid" jq -e . plugin/codex-plugin/plugin.json
 check "AGENTS.md exists" test -f AGENTS.md
 check "AGENTS.md mentions CLAUDE.md" grep -q "CLAUDE.md" AGENTS.md

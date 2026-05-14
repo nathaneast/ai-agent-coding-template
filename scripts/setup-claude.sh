@@ -27,20 +27,20 @@ check() {
 check "settings.json exists" test -f plugin/claude/settings.json
 check "settings.json valid JSON" jq -e . plugin/claude/settings.json
 check "SessionStart hook registered" bash -c 'jq -e ".hooks.SessionStart[0]" plugin/claude/settings.json'
-check "SessionEnd hook registered" bash -c 'jq -e ".hooks.SessionEnd[0]" plugin/claude/settings.json'
+check "SessionEnd hook NOT present" bash -c '! jq -e ".hooks.SessionEnd" plugin/claude/settings.json'
 check "session-start.sh executable" test -x plugin/claude/hooks/session-start.sh
-check "session-end.sh executable" test -x plugin/claude/hooks/session-end.sh
 
-for skill in branch-strategy tdd-loop consensus-loop env-security session-index; do
+for skill in branch-strategy tdd-loop consensus-loop env-security ss-re; do
   check "skill $skill/SKILL.md" test -f "plugin/claude/skills/$skill/SKILL.md"
 done
 
 check "plugin/claude-plugin/plugin.json valid" jq -e . plugin/claude-plugin/plugin.json
-check ".omc/learnings/preferences.md" test -f .omc/learnings/preferences.md
-check ".omc/learnings/pitfalls.md" test -f .omc/learnings/pitfalls.md
-check ".omc/learnings/patterns.md" test -f .omc/learnings/patterns.md
-check ".omc/learnings/glossary.md" test -f .omc/learnings/glossary.md
-check ".omc/learnings/_metrics.json valid" jq -e . .omc/learnings/_metrics.json
+check "plugin version 0.2.1" bash -c 'jq -e ".version == \"0.2.1\"" plugin/claude-plugin/plugin.json'
+check "command ss-re registered" bash -c 'jq -e ".commands | index(\"ss-re\")" plugin/claude-plugin/plugin.json'
+check "rules/memory.md exists" test -f plugin/claude/rules/memory.md
+check "templates CLAUDE.md exists" test -f templates/project-init/CLAUDE.md
+check "templates CLAUDE.local.md exists" test -f templates/project-init/.claude/CLAUDE.local.md
+check "templates .gitignore exists" test -f templates/project-init/.gitignore
 
 if command -v bats >/dev/null 2>&1; then
   check "bats tests pass" bats plugin/claude/hooks/tests/

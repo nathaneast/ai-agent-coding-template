@@ -26,7 +26,7 @@ source "$SCRIPT_DIR/lib/token-budget.sh"
 TOKEN_LIMIT=7000
 # Skills live in the plugin (not the project)
 SKILLS_DIR="$PLUGIN_ROOT/claude/skills"
-CORE_SKILLS=(branch-strategy tdd-loop consensus-loop env-security session-index feedback-capture)
+CORE_SKILLS=(branch-strategy tdd-loop consensus-loop env-security ss-re)
 
 log_info "SessionStart: injecting core skills"
 
@@ -51,21 +51,9 @@ for skill in "${CORE_SKILLS[@]}"; do
   fi
 done
 
-# 3. learnings — from the PROJECT_CWD (project-specific)
-LEARNINGS_DIR="$PROJECT_CWD/.omc/learnings"
-if [[ -d "$LEARNINGS_DIR" ]]; then
-  for category in preferences pitfalls patterns glossary; do
-    inject_section "Learnings: $category" "$LEARNINGS_DIR/$category.md"
-  done
-fi
-
-# 4. session-index — from the PROJECT_CWD
-SESSION_INDEX="$PROJECT_CWD/.omc/sessions/index.json"
-if [[ -f "$SESSION_INDEX" ]]; then
-  printf '## Recent Sessions\n\n```json\n'
-  tail -c 2000 "$SESSION_INDEX"
-  printf '\n```\n\n'
-fi
+# 3. Snapshot 회수 (직전 세션 컨텍스트)
+SNAPSHOT="$PROJECT_CWD/.omc/snapshot.md"
+inject_section "Previous Session Snapshot (from /ss-re)" "$SNAPSHOT"
 
 log_info "SessionStart: injected ~${total_tokens} tokens"
 

@@ -11,12 +11,13 @@
 ```
 [설치 1회] curl install.sh → ~/.claude/plugins/nathaneast-aiacht/
             └─ 글로벌 SessionStart 훅 자동 등록
+            └─ ~/.claude/CLAUDE.md에 메모리 룰 자동 append
 
-[새 프로젝트] /pjt-init  →  6개 폴더 + .harness-active 마커 생성
+[새 프로젝트] /pjt-init  →  6개 폴더 + CLAUDE.md + .claude/CLAUDE.local.md + .harness-active 마커 생성
                           ↓
               다음 세션부터 SessionStart 훅이 5 스킬 자동 컨텍스트 주입
 
-[일상 작업] 9개 슬래시 커맨드 + 13 스킬 + .omc/learnings/ 영속 학습
+[일상 작업] 15개 슬래시 커맨드 + 11 스킬 + native memory("저장해") + /ss-re 스냅샷
 
 [스킬 공유] /merge-skill <path> --push  →  글로벌 레포에 promote → 다른 PC update.sh로 동기화
 
@@ -34,6 +35,7 @@ bash /tmp/install.sh
 
 - 설치 위치: `~/.claude/plugins/nathaneast-aiacht/`
 - 글로벌 `~/.claude/settings.json`에 SessionStart 훅 자동 등록 (`.bak` 백업 포함)
+- 글로벌 `~/.claude/CLAUDE.md`에 메모리 분기 룰 자동 append (idempotent)
 - 권한 prompt 없이 작동하려면 글로벌 settings `"defaultMode": "bypassPermissions"` 권장
 
 ---
@@ -55,39 +57,44 @@ claude
 
 ```
 ~/projects/my-app/
-├── 01.spec/          ← PRD, ADR, 유저 스토리 (최상위 직접 생성)
-├── 02.workflow/      ← SOP
-├── 03.archive/       ← 완료 작업 아카이브
-├── 04.docs/          ← RUNBOOK, RELEASE_NOTES, HANDOFF
-├── 05.tasks/         ← todo.md, prompt.md, feedback.md
-├── openspec/         ← 명세 워크플로우
-├── .harness-active   ← SessionStart 훅 활성화 마커
-└── .gitignore        ← .env 보호 자동 추가
+├── 01.spec/                    ← PRD, ADR, 유저 스토리
+├── 02.workflow/                ← SOP
+├── 03.archive/                 ← 완료 작업 아카이브
+├── 04.docs/                    ← RUNBOOK, RELEASE_NOTES, HANDOFF
+├── 05.tasks/                   ← todo.md, prompt.md, feedback.md
+├── openspec/                   ← 명세 워크플로우
+├── CLAUDE.md                   ← 프로젝트 메모리 (git 추적, "저장해" 트리거)
+├── .claude/CLAUDE.local.md     ← 개인 메모리 (gitignore, "내 PC에만" 트리거)
+├── .harness-active             ← SessionStart 훅 활성화 마커
+└── .gitignore                  ← .env + CLAUDE.local.md + snapshot.md 제외
 ```
 
-> **중요**: 폴더는 **로컬 프로젝트 최상위에 직접** 생성됩니다. `templates/project-init/` 같은 중첩 경로 안에 들어가지 않습니다. 본 레포의 `templates/project-init/`은 *글로벌 도구가 보관하는 원본 위치*일 뿐, 사용자 프로젝트로 복사될 때는 최상위로 펼쳐집니다.
+> **중요**: 폴더는 **로컬 프로젝트 최상위에 직접** 생성됩니다. 본 레포의 `templates/project-init/`은 *글로벌 도구가 보관하는 원본 위치*일 뿐, 사용자 프로젝트로 복사될 때는 최상위로 펼쳐집니다.
 
 다음 세션부터 글로벌 SessionStart 훅이 `.harness-active` 감지하여 5 스킬 자동 주입.
 
 ---
 
-## 3. 14개 슬래시 커맨드
+## 3. 15개 슬래시 커맨드
 
 ### 환경 셋업 (4)
 | 커맨드 | 설명 |
 |--------|------|
-| `/pjt-init` | 새 프로젝트에 6 폴더 + 마커 + .gitignore 생성 |
+| `/pjt-init` | 새 프로젝트에 6 폴더 + CLAUDE.md + .claude/CLAUDE.local.md + 마커 + .gitignore 생성 |
 | `/setup-claude` | Claude Code 측 셋업 검증 (settings.json, hooks, 5 스킬 등) |
 | `/setup-codex` | Codex CLI 측 셋업 검증 (config.toml, hooks.json) |
 | `/setup-both` | 양쪽 동시 검증 + diff (identical 보장) |
 
-### 일상 워크플로우 (5)
+### 세션 보존 (1)
+| 커맨드 | 설명 |
+|--------|------|
+| `/ss-re` | 현재 세션 컨텍스트 스냅샷 → `.omc/snapshot.md` 저장 → 다음 세션 자동 회수 |
+
+### 일상 워크플로우 (3)
 | 커맨드 | 설명 |
 |--------|------|
 | `/db-ck <지시>` | 사용자 지시를 5요소(목표/범위/수용/제약/위험)로 분해 + 더블체크 |
-| `/learn <category>: <text>` | `.omc/learnings/{preferences,pitfalls,patterns,glossary}.md`에 누적 → 다음 세션 회수 |
 | `/consensus <task>` | Claude 작업 → Codex 리뷰 → 합의 도달까지 자동 루프 (max 4) |
-| `/resume-session N` | N개 전 세션 컨텍스트 복원 (`.omc/sessions/index.json`) |
 | `/build <PRD>` | PRD 기반 ralph 자동 빌드 (TDD + consensus 강제) |
 
 ### Git + 배포 (5) — 새 프로젝트에서 일상 사용
@@ -108,17 +115,17 @@ claude
 
 ---
 
-## 4. 13개 스킬
+## 4. 11개 스킬
 
 ### 자동 주입 (5개, 매 세션 SessionStart)
 - `branch-strategy` — git 브랜치 룰
 - `tdd-loop` — TDD 워크플로우
 - `consensus-loop` — Codex 합의 루프 + 3단 폴백
 - `env-security` — .env 보안 절대 규칙
-- `session-index` — 세션 인덱스 + /resume-session
+- `ss-re` — 세션 스냅샷 저장/회수
 
-### 명시 호출 (8개, 슬래시 커맨드로 트리거)
-- `learn`, `double-check`, `merge-skill`, `build`
+### 명시 호출 (6개, 슬래시 커맨드로 트리거)
+- `double-check`, `merge-skill`, `build`
 - `openspec-propose`, `openspec-explore`, `openspec-apply`, `openspec-archive`
 
 ---
@@ -126,33 +133,32 @@ claude
 ## 5. 회사 PC ↔ 개인 PC 동기화 흐름
 
 ```
-[개인 PC A 프로젝트]                                                          
-~/projects/A-app/.claude/skills/                                              
-├── Q/SKILL.md  ← 실험적으로 만듦                                              
-├── W/SKILL.md                                                                
-└── E/SKILL.md                                                                
-     │                                                                        
-     │ /merge-skill ~/projects/A-app/.claude/skills/Q --push                  
-     │ /merge-skill ~/projects/A-app/.claude/skills/W --push                  
-     │ /merge-skill ~/projects/A-app/.claude/skills/E --push                  
-     ▼                                                                        
-[개인 PC 글로벌] ~/.claude/plugins/nathaneast-aiacht/plugin/claude/skills/    
-+ Q/W/E 복사 + 3 커밋 + git push origin main                                  
-     │                                                                        
-     ▼                                                                        
-[GitHub] yunjadong-team/nathaneast-ai-agent-coding-template (메인)            
-     │                                                                        
-     │ (선택) /mirror-personal                                                
-     │   → nathaneast/nathaneast-ai-agent-coding-template (백업)              
-     │                                                                        
-     │                                                                        
-[회사 PC] bash ~/.claude/plugins/nathaneast-aiacht/scripts/update.sh          
-     │  ← git pull --ff-only                                                  
-     ▼                                                                        
-[회사 PC 글로벌] Q/W/E 동기화됨                                                
-     │                                                                        
-     ▼                                                                        
-다음 Claude Code 세션 SessionStart 훅이 Q/W/E 자동 컨텍스트 주입             
+[개인 PC A 프로젝트]
+~/projects/A-app/.claude/skills/
+├── Q/SKILL.md  ← 실험적으로 만듦
+├── W/SKILL.md
+└── E/SKILL.md
+     │
+     │ /merge-skill ~/projects/A-app/.claude/skills/Q --push
+     │ /merge-skill ~/projects/A-app/.claude/skills/W --push
+     │ /merge-skill ~/projects/A-app/.claude/skills/E --push
+     ▼
+[개인 PC 글로벌] ~/.claude/plugins/nathaneast-aiacht/plugin/claude/skills/
++ Q/W/E 복사 + 3 커밋 + git push origin main
+     │
+     ▼
+[GitHub] yunjadong-team/nathaneast-ai-agent-coding-template (메인)
+     │
+     │ (선택) /mirror-personal
+     │   → nathaneast/nathaneast-ai-agent-coding-template (백업)
+     │
+[회사 PC] bash ~/.claude/plugins/nathaneast-aiacht/scripts/update.sh
+     │  ← git pull --ff-only
+     ▼
+[회사 PC 글로벌] Q/W/E 동기화됨
+     │
+     ▼
+다음 Claude Code 세션 SessionStart 훅이 Q/W/E 자동 컨텍스트 주입
 ```
 
 ### 명령 요약
@@ -169,21 +175,55 @@ bash ~/.claude/plugins/nathaneast-aiacht/scripts/update.sh
 
 ---
 
-## 6. 영속 학습 (`/learn`)
+## 6. 메모리 + 세션 보존
 
-세션을 거듭하며 사용자 선호/패턴/함정을 누적해서 다음 세션 시작 시 자동 회수.
+본 하네스는 Claude Code native memory를 활용 + `/ss-re` 스냅샷으로 세션 손실 방지.
 
-```bash
-# 학습 추가 (Claude Code 안에서)
-/learn preferences: 미니멀 셋업 우선. Why: 내일부터 사용. When: 새 스킬 추가 시.
-/learn pitfalls: settings.local.json 콜론 형식 권한은 매칭 안 됨. Fix: 스페이스 형식 사용.
+### 메모리 — "저장해" 자연어 트리거 (3계층)
+
+| 사용자 발언 | 저장 위치 | 적용 범위 |
+|------------|----------|----------|
+| "저장해" / "기억해" (기본) | `<project>/CLAUDE.md` | 이 프로젝트 (git 공유) |
+| "내 PC에만" / "개인용" | `<project>/.claude/CLAUDE.local.md` | 이 프로젝트 + 개인 (gitignore) |
+| "글로벌에" / "전역" / "모든 프로젝트" | `~/.claude/CLAUDE.md` | 모든 프로젝트 + 머신 |
+
+회수: Claude Code가 매 세션 자동 컨텍스트 로드. 별도 호출 X.
+조회/편집: `/memory` (Claude Code 공식).
+정리: 파일 길어지면 사용자가 `/memory`로 직접 편집.
+
+### 스냅샷 — `/ss-re` (세션 손실 방지)
+
+Claude Code의 `--continue` / `--resume`이 불안정한 문제 해결.
+
+**언제 쓰나**:
+- MCP/플러그인 권한 변경 후 Claude Code 재시작
+- 세팅 수정으로 강제 종료
+- 정확히 같은 자리로 복귀하고 싶을 때
+
+**사용**:
+```
+[작업 중]
+사용자: /ss-re
+
+Claude: ✅ Snapshot 저장됨
+       📍 ~/projects/A/.omc/snapshot.md
+       - 작업: ...
+       - 다음: ...
+
+[사용자가 Claude Code 종료 → 재시작]
+
+[새 세션] cd ~/projects/A && claude
+
+Claude: 📍 직전 세션 스냅샷 복원했습니다.
+       - 작업: ...
+       - 다음: ...
+       그대로 진행할까요? (yes / 변경 / 취소)
 ```
 
-저장 위치: 프로젝트별 `.omc/learnings/{preferences,pitfalls,patterns,glossary}.md`
-
-자동 트림: preferences/pitfalls 200줄, patterns/glossary 100줄 초과 시 `_archive/`로 이동.
-
-KPI 카운터: `.omc/learnings/_metrics.json` (learnings_added, learnings_recalled, double_check_invoked, consensus_first_pass, consensus_loops_total).
+**파일**:
+- `<project>/.omc/snapshot.md` — 단일 파일 (덮어쓰기)
+- `.gitignore`에 자동 포함
+- 작업 완료 후 사용자가 직접 `rm` 또는 다음 `/ss-re` 호출이 덮어씀
 
 ---
 
@@ -221,11 +261,11 @@ nathaneast-ai-agent-coding-template/        ← 본 레포 (글로벌 도구 소
 │
 ├── plugin/                 ← 글로벌 설치 대상 (install.sh가 ~/.claude/plugins/nathaneast-aiacht/로 복사)
 │   ├── claude/
-│   │   ├── settings.json   ← SessionStart/SessionEnd/PostToolUse 훅 정의
-│   │   ├── hooks/          ← session-start.sh, session-end.sh, posttool-openspec-guard.sh
-│   │   ├── skills/         ← 13 스킬 SKILL.md
-│   │   ├── commands/       ← 12개 슬래시 커맨드 .md
-│   │   ├── rules/          ← 5 규칙 (coding, design, folder, project, user-interaction)
+│   │   ├── settings.json   ← SessionStart/PostToolUse 훅 정의 (SessionEnd 제거됨)
+│   │   ├── hooks/          ← session-start.sh, posttool-openspec-guard.sh
+│   │   ├── skills/         ← 11 스킬 SKILL.md
+│   │   ├── commands/       ← 15개 슬래시 커맨드 .md
+│   │   ├── rules/          ← 6 규칙 (coding, design, folder, project, user-interaction, memory)
 │   │   └── agents/         ← team-guide, advisor
 │   ├── codex/              ← Codex CLI 미러 (hooks/config.toml/hooks.json)
 │   ├── claude-plugin/      ← .claude-plugin/plugin.json (마켓플레이스 메타)
@@ -237,7 +277,10 @@ nathaneast-ai-agent-coding-template/        ← 본 레포 (글로벌 도구 소
 │   ├── 03.archive/         ← 완료 작업 아카이브
 │   ├── 04.docs/            ← RUNBOOK, RELEASE_NOTES, HANDOFF, ONBOARDING
 │   ├── 05.tasks/           ← todo.md, prompt.md, feedback.md
-│   └── openspec/           ← 명세 워크플로우 (changes/, specs/, config.yaml)
+│   ├── openspec/           ← 명세 워크플로우 (changes/, specs/, config.yaml)
+│   ├── CLAUDE.md           ← 프로젝트 메모리 시작 파일
+│   └── .claude/
+│       └── CLAUDE.local.md ← 개인 메모리 시작 파일 (gitignore)
 │
 ├── scripts/                ← 보조 스크립트
 │   ├── pjt-init.sh
@@ -246,15 +289,12 @@ nathaneast-ai-agent-coding-template/        ← 본 레포 (글로벌 도구 소
 │   ├── update.sh
 │   ├── setup-claude.sh / setup-codex.sh / setup-both.sh
 │   ├── build.sh / build-iteration-gate.sh
-│   ├── archive-prompt.sh / trigram-jaccard.sh / resume-session.sh
+│   ├── archive-prompt.sh / trigram-jaccard.sh
 │   └── clone-to-company.sh / install-env-guard.sh
 │
-├── .omc/                   ← 본 레포 작업 메모리
-│   ├── plans/              ← Planner/Architect/Critic 합의 산출물
-│   ├── learnings/          ← 본 레포 작업 학습 누적
-│   └── sessions/           ← 세션 인덱스
-│
-└── policy/DEPRECATED.md    ← 구 policy/ → .claude/rules/ 마이그 안내
+└── .omc/                   ← 본 레포 작업 메모리
+    ├── plans/              ← Planner/Architect/Critic 합의 산출물
+    └── snapshot.md         ← 직전 세션 스냅샷 (/ss-re)
 ```
 
 ---
@@ -277,7 +317,7 @@ nathaneast-ai-agent-coding-template/        ← 본 레포 (글로벌 도구 소
 ### bats 테스트 실패
 ```bash
 cd ~/.claude/plugins/nathaneast-aiacht
-bats plugin/claude/hooks/tests/  # 45/45 PASS 기대
+bats plugin/claude/hooks/tests/  # ~36 PASS 기대
 ```
 
 ---
@@ -308,7 +348,8 @@ git push origin main
 
 - **v0.1.0** (2026-05-14): 초기 v0.1.0 — 본 레포 단일 프로젝트 모델
 - **v0.2.0** (2026-05-14): 글로벌 도구 + /pjt-init + /merge-skill 단순화 + /mirror-personal
-- 변경 이력: `git log v0.1.0..v0.2.0 --oneline`
+- **v0.2.1** (2026-05-14): native memory 활용 + /ss-re 스냅샷 신규 + /learn /resume-session 폐기
+- 변경 이력: `git log --oneline`
 
 ---
 

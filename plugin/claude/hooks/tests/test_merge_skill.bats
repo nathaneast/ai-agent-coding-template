@@ -10,9 +10,10 @@ setup() {
   echo '{"skills":[]}' > plugin/claude-plugin/plugin.json
   touch .omc/learnings/_history.jsonl
 
-  # Create a sample external skill
-  mkdir -p /tmp/ext-skill-$$
-  cat > /tmp/ext-skill-$$/SKILL.md <<'EOF'
+  # Create a sample external skill (dir basename = skill name used by merge-skill)
+  export EXT_PATH="$TEST_TMPDIR/external-test"
+  mkdir -p "$EXT_PATH"
+  cat > "$EXT_PATH/SKILL.md" <<'EOF'
 # Skill: external-test
 
 Test skill for merge-skill bats.
@@ -20,10 +21,12 @@ Test skill for merge-skill bats.
 ## Body
 Hello.
 EOF
-  export EXT_PATH="/tmp/ext-skill-$$"
 }
 
-teardown() { rm -rf "$TEST_TMPDIR" "$EXT_PATH"; }
+teardown() {
+  [[ -n "${TEST_TMPDIR:-}" ]] && rm -rf "$TEST_TMPDIR"
+  [[ -n "${EXT_PATH:-}" ]] && rm -rf "$EXT_PATH"
+}
 
 @test "merge-skill from directory adds skill" {
   cd "$TEST_TMPDIR"
