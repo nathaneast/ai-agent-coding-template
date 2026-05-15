@@ -14,6 +14,11 @@ allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 /merge-solo ~/projects/A/.claude/commands/foo.md ~/projects/A/.claude/hooks/bar.sh
 /merge-solo ./my-rule.md ./my-hook.sh --push
 /merge-solo ~/temp/agents/checker.md --dry-run
+
+# 자연어 힌트로 예외 경로 지정 (자동 판별 실패 / 카테고리 강제)
+/merge-solo ./weird-config.json 이거 plugin/claude/settings.json 옆에 넣어줘
+/merge-solo ./helper.py --target plugin/scripts/helper.py
+/merge-solo ./theme.css 이건 templates/project-init/.claude/theme.css 로 가야 함
 ```
 
 ## 인자
@@ -21,6 +26,8 @@ allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 - 위치 인자: 1개 이상의 로컬 파일/디렉토리 절대/상대 경로 (공백 구분)
 - `--push`: commit 후 `origin` + `nathaneast-old` 양쪽 push (기본은 commit만)
 - `--dry-run`: 실제 복사/commit 하지 않고 라우팅 계획만 출력
+- `--target <repo-relative-path>`: 직전 위치 인자의 목적지를 강제 지정 (자동 판별 무시)
+- **자연어 힌트**: 위치 인자 사이/뒤에 한국어 또는 영어로 "X는 Y 경로로", "이 파일은 plugin/Z 아래에" 등의 지시를 섞어도 됨. Claude main이 해석하여 라우팅에 반영. 자연어로 명시된 경로가 자동 판별보다 우선.
 
 ## 종류 판별 매핑 (Claude가 따를 규칙)
 
@@ -33,7 +40,8 @@ allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 | `*.md` + 부모가 `rules/` | rule | `plugin/claude/rules/<name>.md` |
 | `*.md` + 부모가 `agents/` | agent | `plugin/claude/agents/<name>.md` |
 | `*.md` + 부모가 `memory/user/` 또는 `06.memory/` | memory | `plugin/memory/user/<name>.md` |
-| 일치 패턴 없음 | unknown | **사용자 1회 확인** (cancel / 강제 위치 지정) |
+| 일치 패턴 없음 + `--target`/자연어 힌트 있음 | 사용자 지정 | 지정 경로 그대로 |
+| 일치 패턴 없음 + 힌트 없음 | unknown | **사용자 1회 확인** (취소 / 경로 입력) |
 
 부모 디렉토리가 명확하지 않으면 파일 내용·확장자로 판단:
 - `*.sh` → hook (chmod +x 적용)
