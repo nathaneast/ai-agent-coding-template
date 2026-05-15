@@ -100,6 +100,18 @@
   },
   "hotPaths": [
     {
+      "path": "README.md",
+      "accessCount": 6,
+      "lastAccessed": 1778809766371,
+      "type": "file"
+    },
+    {
+      "path": "scripts/update.sh",
+      "accessCount": 2,
+      "lastAccessed": 1778809918902,
+      "type": "file"
+    },
+    {
       "path": "plugin/claude/commands/solo.md",
       "accessCount": 1,
       "lastAccessed": 1778803349799,
@@ -116,6 +128,12 @@
       "accessCount": 1,
       "lastAccessed": 1778803399355,
       "type": "directory"
+    },
+    {
+      "path": "install.sh",
+      "accessCount": 1,
+      "lastAccessed": 1778809918261,
+      "type": "file"
     }
   ],
   "userDirectives": []
