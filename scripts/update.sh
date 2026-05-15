@@ -38,3 +38,42 @@ if [[ -d "$COMMANDS_SRC" ]]; then
   echo ""
   echo "→ ${CMD_COUNT}개 슬래시 커맨드 sync → $COMMANDS_DST"
 fi
+
+# Codex CLI 측 sync (~/.codex/) — install.sh와 동일 절차 (idempotent)
+CODEX_DIR="$HOME/.codex"
+CODEX_SRC="$GLOBAL_DIR/plugin/codex"
+if [[ -d "$CODEX_SRC" ]]; then
+  mkdir -p "$CODEX_DIR/hooks" "$CODEX_DIR/prompts" "$CODEX_DIR/skills"
+  CODEX_HOOK_SH="$CODEX_DIR/hooks/session-start.sh"
+  cp -f "$CODEX_SRC/hooks/session-start.sh" "$CODEX_HOOK_SH"
+  chmod +x "$CODEX_HOOK_SH"
+  if [[ -f "$CODEX_DIR/hooks.json" ]]; then
+    HAS=$(jq --arg cmd "$CODEX_HOOK_SH" \
+      '[.hooks.SessionStart[]?.hooks[]? | select(.command == $cmd)] | length' \
+      "$CODEX_DIR/hooks.json" 2>/dev/null || echo 0)
+    if [[ "$HAS" == "0" ]]; then
+      TMP=$(mktemp)
+      jq --arg cmd "$CODEX_HOOK_SH" \
+        '.hooks.SessionStart = ((.hooks.SessionStart // []) + [{matcher:"startup|clear|compact", hooks:[{type:"command", command:$cmd, timeout:30}]}])' \
+        "$CODEX_DIR/hooks.json" > "$TMP" && mv "$TMP" "$CODEX_DIR/hooks.json"
+    fi
+  else
+    jq --arg cmd "$CODEX_HOOK_SH" \
+      '.hooks.SessionStart[0].hooks[0].command = $cmd' \
+      "$CODEX_SRC/hooks.json" > "$CODEX_DIR/hooks.json"
+  fi
+  if [[ ! -f "$CODEX_DIR/config.toml" ]]; then
+    cp "$CODEX_SRC/config.toml" "$CODEX_DIR/config.toml"
+  elif ! grep -q "codex_hooks = true" "$CODEX_DIR/config.toml" 2>/dev/null; then
+    cp "$CODEX_DIR/config.toml" "$CODEX_DIR/config.toml.bak-$(date -u +%Y%m%d-%H%M%S)"
+    {
+      echo ""
+      echo "# nathaneast-aiacht hooks (auto-appended)"
+      echo "[features]"
+      echo "codex_hooks = true"
+    } >> "$CODEX_DIR/config.toml"
+  fi
+  [[ -n "$(ls -A "$CODEX_SRC/prompts" 2>/dev/null)" ]] && cp -rf "$CODEX_SRC/prompts/." "$CODEX_DIR/prompts/" 2>/dev/null || true
+  [[ -n "$(ls -A "$CODEX_SRC/skills" 2>/dev/null)" ]]  && cp -rf "$CODEX_SRC/skills/." "$CODEX_DIR/skills/" 2>/dev/null || true
+  echo "→ Codex CLI 자산 sync → $CODEX_DIR"
+fi

@@ -48,6 +48,58 @@ if [[ -d "$COMMANDS_SRC" ]]; then
   echo "→ ${CMD_COUNT}개 슬래시 커맨드 sync → $COMMANDS_DST"
 fi
 
+# 2.6. Codex CLI 측 sync (~/.codex/) — 선택적, 미설치여도 hook 자산은 배치
+CODEX_DIR="$HOME/.codex"
+CODEX_SRC="$INSTALL_DIR/plugin/codex"
+if [[ -d "$CODEX_SRC" ]]; then
+  mkdir -p "$CODEX_DIR/hooks" "$CODEX_DIR/prompts" "$CODEX_DIR/skills"
+
+  # hooks/session-start.sh → ~/.codex/hooks/session-start.sh + chmod +x
+  CODEX_HOOK_SH="$CODEX_DIR/hooks/session-start.sh"
+  cp -f "$CODEX_SRC/hooks/session-start.sh" "$CODEX_HOOK_SH"
+  chmod +x "$CODEX_HOOK_SH"
+
+  # hooks.json: 기존 oh-my-codex 등 다른 도구 등록 보존을 위해 SessionStart 배열에 append (중복 방지)
+  if [[ -f "$CODEX_DIR/hooks.json" ]]; then
+    HAS=$(jq --arg cmd "$CODEX_HOOK_SH" \
+      '[.hooks.SessionStart[]?.hooks[]? | select(.command == $cmd)] | length' \
+      "$CODEX_DIR/hooks.json" 2>/dev/null || echo 0)
+    if [[ "$HAS" == "0" ]]; then
+      TMP=$(mktemp)
+      jq --arg cmd "$CODEX_HOOK_SH" \
+        '.hooks.SessionStart = ((.hooks.SessionStart // []) + [{matcher:"startup|clear|compact", hooks:[{type:"command", command:$cmd, timeout:30}]}])' \
+        "$CODEX_DIR/hooks.json" > "$TMP" && mv "$TMP" "$CODEX_DIR/hooks.json"
+    fi
+  else
+    jq --arg cmd "$CODEX_HOOK_SH" \
+      '.hooks.SessionStart[0].hooks[0].command = $cmd' \
+      "$CODEX_SRC/hooks.json" > "$CODEX_DIR/hooks.json"
+  fi
+
+  # config.toml: 신규면 cp, 기존이면 [features] codex_hooks=true 만 idempotent merge
+  if [[ ! -f "$CODEX_DIR/config.toml" ]]; then
+    cp "$CODEX_SRC/config.toml" "$CODEX_DIR/config.toml"
+  elif ! grep -q "codex_hooks = true" "$CODEX_DIR/config.toml" 2>/dev/null; then
+    cp "$CODEX_DIR/config.toml" "$CODEX_DIR/config.toml.bak-$(date -u +%Y%m%d-%H%M%S)"
+    {
+      echo ""
+      echo "# nathaneast-aiacht hooks (auto-appended)"
+      echo "[features]"
+      echo "codex_hooks = true"
+    } >> "$CODEX_DIR/config.toml"
+  fi
+
+  # prompts/skills: 비어있을 수 있음. 있으면 sync
+  [[ -n "$(ls -A "$CODEX_SRC/prompts" 2>/dev/null)" ]] && cp -rf "$CODEX_SRC/prompts/." "$CODEX_DIR/prompts/" 2>/dev/null || true
+  [[ -n "$(ls -A "$CODEX_SRC/skills" 2>/dev/null)" ]]  && cp -rf "$CODEX_SRC/skills/." "$CODEX_DIR/skills/" 2>/dev/null || true
+
+  echo "→ Codex CLI 자산 sync → $CODEX_DIR (config.toml + hooks.json + hooks/session-start.sh)"
+
+  if ! command -v codex >/dev/null 2>&1; then
+    echo "ℹ Codex CLI 미설치 — 사용하려면: npm i -g @openai/codex"
+  fi
+fi
+
 # 3. 글로벌 ~/.claude/CLAUDE.md에 nathaneast-aiacht 섹션 등록 (idempotent)
 GLOBAL_CLAUDE="$HOME/.claude/CLAUDE.md"
 MARKER="## nathaneast-aiacht"
