@@ -17,7 +17,7 @@
                           ↓
               다음 세션부터 SessionStart 훅이 5 스킬 자동 컨텍스트 주입
 
-[일상 작업] 13개 슬래시 커맨드 + 11 스킬 + native memory("저장해") + /ss-re 스냅샷
+[일상 작업] 16개 슬래시 커맨드 + 14 스킬 + native memory("저장해") + /ss-re 스냅샷 + /solo 자율 실행
 
 [스킬 공유] /merge-skill <path> --push  →  글로벌 레포에 promote → 다른 PC update.sh로 동기화
 
@@ -75,7 +75,7 @@ claude
 
 ---
 
-## 3. 13개 슬래시 커맨드
+## 3. 16개 슬래시 커맨드
 
 ### 환경 셋업 (4)
 | 커맨드 | 설명 |
@@ -95,14 +95,24 @@ claude
 |--------|------|
 | `/dbck <지시>` | 사용자 지시를 5요소(목표/범위/수용/제약/위험)로 분해 + 더블체크 |
 
-### Git + 배포 (5) — 새 프로젝트에서 일상 사용
+### 자율 실행 (2) — v0.5 신규
+| 커맨드 | 설명 |
+|--------|------|
+| `/solo "<작업>"` 또는 `/solo --spec <md>` | **1~10시간 무인 자율 실행**. planner가 완료조건 자동 도출 → Codex 합의 → 실행 루프 → 검증 → commit. critical 100% 의무 + 80% graceful exit + 비용 cap $20 자동 다운그레이드 |
+| `/pg` | `/solo` 진행 상황 즉시 출력 (phase / criteria 통과율 / 비용 / 예상 종료) |
+
+### 피드백 (1)
+| 커맨드 | 설명 |
+|--------|------|
+| `/fdb <자유 텍스트>` | 자연어 피드백을 `03.archive/feedback.md`에 1줄 append (resolver가 후속 자동 해결 시도) |
+
+### Git + 배포 (4) — 새 프로젝트에서 일상 사용
 | 커맨드 | 설명 |
 |--------|------|
 | `/gi [name]` | git init + private GitHub 레포 생성 + `main`/`stage`/`dev` 브랜치 셋업 |
 | `/cm` | **이 세션에서 변경한 파일만** 커밋 (메시지 자동 생성, 푸시 안 함) |
 | `/cp` | `/cm` + 현재 브랜치 푸시 |
 | `/cp-sm` | `/cp` + `dev → stage → main` 승격 병합 푸시 (배포 트리거) |
-| `/pg [짧게\|상세]` | 현재 세션 진행상황 보고 (Now/Done/InProgress/Pending/Blockers/Next) |
 
 ### 스킬 공유 — 역전파 (2)
 | 커맨드 | 설명 |
@@ -118,7 +128,7 @@ claude
 
 ---
 
-## 4. 11개 스킬
+## 4. 14개 스킬
 
 ### 자동 주입 (5개, 매 세션 SessionStart)
 - `branch-strategy` — git 브랜치 룰
@@ -127,7 +137,10 @@ claude
 - `env-security` — .env 보안 절대 규칙
 - `ss-re` — 세션 스냅샷 저장/회수
 
-### 명시 호출 (6개)
+### 명시 호출 (9개)
+- `solo` (v0.5) — `/solo` 슬래시의 7 phase 자율 실행 본체 (분석→완료조건→합의→실행→검증→커밋→보고)
+- `user-helper` — 사용자 비효율 자동 감지 후 1줄 제안
+- `feedback-capture` — `/fdb` 자연어 피드백 적재 파이프라인
 - `double-check`, `merge-skill`
 - `openspec-propose`, `openspec-explore`, `openspec-apply`, `openspec-archive`
 
@@ -396,6 +409,7 @@ git push origin main
 - **v0.2.0** (2026-05-14): 글로벌 도구 + /pjt-init + /merge-skill 단순화 + /mirror-personal
 - **v0.2.1** (2026-05-14): native memory 활용 + /ss-re 스냅샷 신규 + /learn /resume-session 폐기
 - **v0.4** (2026-05-14): 메모리 3-Tier + 자연어 자동 분류 + /push-global-memory
+- **v0.5** (2026-05-15): `/solo` 자율 빌드 에이전트 — 1~10시간 무인 실행 (planner 분석 → criteria 자동 도출 → Codex 합의 → 실행 루프 → 검증 → commit). critical priority 자동 라벨링 + 80% rule + 비용 다운그레이드($15/$18) + DEGRADED_REVIEW 폴백 + 마커 충돌 검사 등 9개 안전장치. `/pg`로 즉시 진행 출력. `solo-result/{run_id}/report.md` 상세 보고서. (관련: `user-helper`, `feedback-capture` 스킬 추가, `/fdb` 커맨드)
 - 변경 이력: `git log --oneline`
 
 ---
