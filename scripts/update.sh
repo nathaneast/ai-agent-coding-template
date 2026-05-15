@@ -27,3 +27,14 @@ else
   echo "Changed files:"
   git diff --name-only "$OLD_HEAD" "$NEW_HEAD" | head -20
 fi
+
+# 슬래시 커맨드 sync (~/.claude/commands/ 에 항상 최신본 반영)
+COMMANDS_SRC="$GLOBAL_DIR/plugin/claude/commands"
+COMMANDS_DST="$HOME/.claude/commands"
+if [[ -d "$COMMANDS_SRC" ]]; then
+  mkdir -p "$COMMANDS_DST"
+  cp -f "$COMMANDS_SRC"/*.md "$COMMANDS_DST"/ 2>/dev/null || true
+  CMD_COUNT=$(ls "$COMMANDS_SRC"/*.md 2>/dev/null | wc -l | tr -d ' ')
+  echo ""
+  echo "→ ${CMD_COUNT}개 슬래시 커맨드 sync → $COMMANDS_DST"
+fi
