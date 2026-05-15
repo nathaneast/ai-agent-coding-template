@@ -10,6 +10,7 @@
 .omc/state/
 .omc/logs/
 .omc/sessions/archive/
+.omc/project-memory.json
 
 # Node modules
 node_modules/
