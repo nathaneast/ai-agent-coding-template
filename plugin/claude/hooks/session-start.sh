@@ -51,9 +51,36 @@ for skill in "${CORE_SKILLS[@]}"; do
   fi
 done
 
-# 3. Snapshot 회수 (직전 세션 컨텍스트)
+# 3. Snapshot 회수 (직전 세션 컨텍스트) — stale check + 명시 표시
 SNAPSHOT="$PROJECT_CWD/.omc/snapshot.md"
-inject_section "Previous Session Snapshot (from /ss-re)" "$SNAPSHOT"
+SNAPSHOT_MAX_AGE_HOURS="${SS_RE_MAX_AGE_HOURS:-24}"
+if [[ -f "$SNAPSHOT" ]]; then
+  SNAPSHOT_TS=$(grep -m1 "^ts:" "$SNAPSHOT" 2>/dev/null | sed 's/^ts: *//' || echo "")
+  if [[ -n "$SNAPSHOT_TS" ]]; then
+    SNAPSHOT_EPOCH=$(date -j -f "%Y-%m-%dT%H:%M:%SZ" "$SNAPSHOT_TS" "+%s" 2>/dev/null || \
+                     date -d "$SNAPSHOT_TS" "+%s" 2>/dev/null || echo 0)
+    NOW_EPOCH=$(date -u +%s)
+    AGE_HOURS=$(( (NOW_EPOCH - SNAPSHOT_EPOCH) / 3600 ))
+    AGE_MIN=$(( ((NOW_EPOCH - SNAPSHOT_EPOCH) % 3600) / 60 ))
+
+    if [[ "$AGE_HOURS" -ge "$SNAPSHOT_MAX_AGE_HOURS" ]]; then
+      mkdir -p "$PROJECT_CWD/.omc/snapshots"
+      mv "$SNAPSHOT" "$PROJECT_CWD/.omc/snapshots/expired-$(date -u +%Y%m%dT%H%M%SZ).md" 2>/dev/null || true
+      log_info "Stale snapshot (${AGE_HOURS}h old) archived"
+    else
+      AUTO_SAVE_FLAG=$(grep -m1 "^auto_save:" "$SNAPSHOT" 2>/dev/null | sed 's/^auto_save: *//' || echo "false")
+      printf '\n---\n\n'
+      printf '## 📍 직전 세션 스냅샷 — %sh %sm 전 저장 (auto_save: %s)\n\n' \
+        "$AGE_HOURS" "$AGE_MIN" "$AUTO_SAVE_FLAG"
+      printf '> **Claude 첫 응답 의무**: 본 스냅샷을 읽고 1~2줄로 직전 상황을 표시한 뒤\n'
+      printf '> `[yes / show / no]` 중 하나를 사용자에게 물을 것. yes → 다음 즉시 단계 자동 진행.\n\n'
+      cat "$SNAPSHOT"
+      printf '\n'
+    fi
+  else
+    inject_section "Previous Session Snapshot (legacy)" "$SNAPSHOT"
+  fi
+fi
 
 log_info "SessionStart: injected ~${total_tokens} tokens"
 

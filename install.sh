@@ -25,18 +25,25 @@ fi
 cp "$SETTINGS" "$SETTINGS.bak-$(date -u +%Y%m%d-%H%M%S)"
 
 HOOK_PATH="$INSTALL_DIR/plugin/claude/hooks/session-start.sh"
+STOP_HOOK_PATH="$INSTALL_DIR/plugin/claude/hooks/stop-snapshot.sh"
 TMP=$(mktemp)
-jq --arg cmd "$HOOK_PATH" '
+jq --arg cmd "$HOOK_PATH" --arg stop "$STOP_HOOK_PATH" '
   .hooks = (.hooks // {}) |
   .hooks.SessionStart = (
     (.hooks.SessionStart // []) |
     if any(.[]; .hooks[]? | .command == $cmd) then .
     else . + [{"matcher":"startup|clear|compact","hooks":[{"type":"command","command":$cmd,"timeout":30}]}]
     end
+  ) |
+  .hooks.Stop = (
+    (.hooks.Stop // []) |
+    if any(.[]; .hooks[]? | .command == $stop) then .
+    else . + [{"hooks":[{"type":"command","command":$stop,"timeout":5}]}]
+    end
   )
 ' "$SETTINGS" > "$TMP" && mv "$TMP" "$SETTINGS"
 
-chmod +x "$HOOK_PATH"
+chmod +x "$HOOK_PATH" "$STOP_HOOK_PATH"
 
 # 2.5. 슬래시 커맨드 글로벌 sync (~/.claude/commands/ 에 복사)
 COMMANDS_SRC="$INSTALL_DIR/plugin/claude/commands"

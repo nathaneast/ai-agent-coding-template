@@ -39,6 +39,23 @@ if [[ -d "$COMMANDS_SRC" ]]; then
   echo "→ ${CMD_COUNT}개 슬래시 커맨드 sync → $COMMANDS_DST"
 fi
 
+# Stop hook 등록 (Snapshot 자동 저장) — 글로벌 ~/.claude/settings.json에 idempotent merge
+SETTINGS="$HOME/.claude/settings.json"
+STOP_HOOK_PATH="$GLOBAL_DIR/plugin/claude/hooks/stop-snapshot.sh"
+if [[ -f "$SETTINGS" && -x "$STOP_HOOK_PATH" ]]; then
+  TMP=$(mktemp)
+  jq --arg stop "$STOP_HOOK_PATH" '
+    .hooks = (.hooks // {}) |
+    .hooks.Stop = (
+      (.hooks.Stop // []) |
+      if any(.[]; .hooks[]? | .command == $stop) then .
+      else . + [{"hooks":[{"type":"command","command":$stop,"timeout":5}]}]
+      end
+    )
+  ' "$SETTINGS" > "$TMP" && mv "$TMP" "$SETTINGS"
+  echo "→ Stop hook 등록 (auto-snapshot 5min throttle)"
+fi
+
 # Codex CLI 측 sync (~/.codex/) — install.sh와 동일 절차 (idempotent)
 CODEX_DIR="$HOME/.codex"
 CODEX_SRC="$GLOBAL_DIR/plugin/codex"
