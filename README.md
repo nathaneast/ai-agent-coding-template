@@ -28,14 +28,63 @@
 
 ## 1. 설치 (1회, 모든 컴퓨터)
 
+### macOS / Linux
+
+터미널에 한 줄:
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/yunjadong-team/nathaneast-ai-agent-coding-template/main/install.sh -o /tmp/install.sh
 bash /tmp/install.sh
 ```
 
+> 개인 미러(nathaneast) 사용 시:
+> ```bash
+> REPO_URL="https://github.com/nathaneast/ai-agent-coding-template" \
+>   bash <(curl -fsSL https://raw.githubusercontent.com/nathaneast/ai-agent-coding-template/main/install.sh)
+> ```
+
+### Windows
+
+**핵심**: 본 하네스는 Bash 스크립트 의존. **PowerShell/cmd에서는 직접 동작 안 함**. WSL2 환경 1회 셋업 후 위 macOS와 동일 흐름.
+
+**1단계 — WSL2 + Ubuntu 설치** (관리자 PowerShell 1회):
+
+```powershell
+wsl --install -d Ubuntu
+# 재부팅 후 시작메뉴 → "Ubuntu" 실행 → 사용자/비밀번호 설정
+```
+
+**2단계 — Ubuntu(WSL) 안에서 의존성 설치**:
+
+```bash
+sudo apt update && sudo apt install -y git jq curl
+git config --global user.name  "..."
+git config --global user.email "..."
+```
+
+**3단계 — Claude Code WSL 버전 설치**:
+
+```bash
+curl -fsSL https://claude.ai/cli/install.sh | bash
+```
+
+**4단계 — 본 하네스 설치** (macOS와 동일):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yunjadong-team/nathaneast-ai-agent-coding-template/main/install.sh -o /tmp/install.sh
+bash /tmp/install.sh
+```
+
+이후부터는 macOS와 100% 동일하게 동작. 작업 디렉토리는 `\\wsl$\Ubuntu\home\<user>\projects\` 또는 `~/projects/`. VS Code Remote-WSL 연동도 가능.
+
+> **Git Bash 대안 (비추천)**: WSL2 사용 불가한 환경에서 Git for Windows의 Git Bash + `scoop install jq` 조합도 ~70% 동작하지만 hook 경로/권한 이슈 발생 가능. 디버깅 시간 손실 우려.
+
+### 공통 — 설치 후 자동 처리되는 것
+
 - 설치 위치: `~/.claude/plugins/nathaneast-aiacht/`
 - 글로벌 `~/.claude/settings.json`에 SessionStart 훅 자동 등록 (`.bak` 백업 포함)
 - 글로벌 `~/.claude/CLAUDE.md`에 메모리 분기 룰 자동 append (idempotent)
+- **16개 슬래시 커맨드** `~/.claude/commands/`에 자동 sync
 - 권한 prompt 없이 작동하려면 글로벌 settings `"defaultMode": "bypassPermissions"` 권장
 
 ---
@@ -378,6 +427,12 @@ nathaneast-ai-agent-coding-template/        ← 본 레포 (글로벌 도구 소
 cd ~/.claude/plugins/nathaneast-aiacht
 bats plugin/claude/hooks/tests/  # ~36 PASS 기대
 ```
+
+### Windows에서 슬래시 커맨드 / 솔로가 안 동작
+- WSL2 안에서 실행하고 있는지 확인: `uname -a` → `Linux ... microsoft-WSL2` 출력 기대
+- PowerShell/cmd에서 `bash`/`install.sh` 직접 실행 시도 → 동작 안 함. WSL2 셸로 진입 후 재실행
+- WSL2 안 `jq` 설치 확인: `which jq` → 경로 출력 기대 (없으면 `sudo apt install -y jq`)
+- WSL/Windows 경로 혼동: 본 하네스는 WSL 내부 `~/.claude/...` 경로 사용. Windows `C:\Users\...\.claude\`와 별개. Claude Code도 WSL 안에서 실행해야 함
 
 ---
 
